@@ -9,7 +9,9 @@ import ru.alekseyk.testskblab.data.db.databaseModule
 import ru.alekseyk.testskblab.data.network.retrofitModule
 import ru.alekseyk.testskblab.data.prefs.appPrefsModule
 import ru.alekseyk.testskblab.domain.usecase.useCaseModule
-import ru.alekseyk.testskblab.presentation.screen.main.mainModule
+import ru.alekseyk.testskblab.presentation.screen.auth.authModule
+import ru.alekseyk.testskblab.presentation.screen.detail.detailModule
+import ru.alekseyk.testskblab.presentation.screen.repo_list.repoListModule
 import ru.alekseyk.testskblab.repository.repositoryModule
 import timber.log.Timber
 
@@ -30,7 +32,9 @@ class App : Application() {
                     repositoryModule,
                     retrofitModule,
                     useCaseModule,
-                    mainModule
+                    repoListModule,
+                    detailModule,
+                    authModule
                 )
             )
         }

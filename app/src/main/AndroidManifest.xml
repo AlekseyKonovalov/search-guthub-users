@@ -13,12 +13,15 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".presentation.screen.main.MainActivity">
+        <activity android:name=".presentation.screen.repo_list.RepoListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".presentation.screen.auth.AuthActivity"/>
+        <activity android:name=".presentation.screen.detail.DetailActivity"/>
 
 
     </application>

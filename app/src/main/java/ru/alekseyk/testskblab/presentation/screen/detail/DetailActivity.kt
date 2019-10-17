@@ -1,18 +1,18 @@
-package ru.alekseyk.testskblab.presentation.screen.main
+package ru.alekseyk.testskblab.presentation.screen.detail
 
 import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_repolist.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.StateActivity
 
-internal class MainActivity : StateActivity<MainViewState>(
-    layoutResource = R.layout.activity_main
+internal class DetailActivity : StateActivity<DetailViewState>(
+    layoutResource = R.layout.activity_detail
 ) {
 
-    override val viewModel by viewModel<MainViewModel>()
+    override val viewModel by viewModel<DetailViewModel>()
 
-    override fun render(state: MainViewState) {
+    override fun render(state: DetailViewState) {
         general_progressbar.isVisible = state.isLoading
     }
 

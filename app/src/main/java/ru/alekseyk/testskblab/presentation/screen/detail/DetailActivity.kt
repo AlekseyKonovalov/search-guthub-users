@@ -1,6 +1,7 @@
 package ru.alekseyk.testskblab.presentation.screen.detail
 
 import androidx.core.view.isVisible
+import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_repolist.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ru.alekseyk.testskblab.R
@@ -16,7 +17,8 @@ internal class DetailActivity : StateActivity<DetailViewState>(
         general_progressbar.isVisible = state.isLoading
     }
 
+
     override fun initViews() {
-        general_toolbar.title = "Main Activity"
+        general_toolbar.title = "Detail Activity"
     }
 }

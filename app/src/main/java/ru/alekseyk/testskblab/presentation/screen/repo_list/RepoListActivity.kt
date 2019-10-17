@@ -13,10 +13,8 @@ internal class RepoListActivity : StateActivity<RepoListViewState>(
     override val viewModel by viewModel<RepoListViewModel>()
 
     override fun render(state: RepoListViewState) {
-        general_progressbar.isVisible = state.isLoading
     }
 
     override fun initViews() {
-        general_toolbar.title = "Main Activity"
     }
 }

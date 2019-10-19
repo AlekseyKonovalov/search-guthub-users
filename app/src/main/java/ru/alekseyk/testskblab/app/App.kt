@@ -11,6 +11,8 @@ import ru.alekseyk.testskblab.data.prefs.appPrefsModule
 import ru.alekseyk.testskblab.data.repository.repositoryModule
 import ru.alekseyk.testskblab.domain.usecase.useCaseModule
 import ru.alekseyk.testskblab.presentation.screen.auth.authModule
+import ru.alekseyk.testskblab.presentation.screen.detail.detailModule
+import ru.alekseyk.testskblab.presentation.screen.repo_list.repoListModule
 import timber.log.Timber
 
 class App : Application() {
@@ -31,9 +33,8 @@ class App : Application() {
                     retrofitModule,
 
                     useCaseModule,
-/*
                     repoListModule,
-                    detailModule,*/
+                    detailModule,
                     authModule
                 )
             )

@@ -27,9 +27,9 @@ internal class AuthActivity : StateActivity<AuthViewState>(
     override fun render(state: AuthViewState) {
         general_progressbar.isVisible = state.isLoading
 
-
         if (state.isFinish) {
             RepoListActivity.startActivity(this@AuthActivity)
+            finish()
         }
     }
 

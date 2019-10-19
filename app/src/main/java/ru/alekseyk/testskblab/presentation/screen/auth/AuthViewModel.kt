@@ -19,14 +19,14 @@ internal class AuthViewModel(
         userUseCase.setUserData(PresentationMapper.toUserEntity(accountName, true))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { currentState.copy(isLoading = true) }
+            .doOnSubscribe { updateState(currentState.copy(isLoading = true)) }
             .subscribeBy(
                 onComplete = {
-                    currentState.copy(isLoading = false, isFinish = true)
+                    updateState(currentState.copy(isLoading = false, isFinish = true))
                 },
                 onError = { error ->
                     Timber.e(error)
-                    currentState.copy(isLoading = false)
+                    updateState(currentState.copy(isLoading = false))
                 }
             ).addTo(disposables)
     }
@@ -36,18 +36,18 @@ internal class AuthViewModel(
         userUseCase.getCurrentUserData()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { currentState.copy(isLoading = true) }
+            .doOnSubscribe { updateState(currentState.copy(isLoading = true)) }
             .subscribeBy(
                 onSuccess = {
                     if (it.isEmpty()) {
-                        currentState.copy(isLoading = false, isFinish = false)
+                        updateState(currentState.copy(isLoading = false, isFinish = false))
                     } else {
-                        currentState.copy(isLoading = false, isFinish = true)
+                        updateState(currentState.copy(isLoading = false, isFinish = true))
                     }
                 },
                 onError = { error ->
                     Timber.e(error)
-                    currentState.copy(isLoading = false)
+                    updateState(currentState.copy(isLoading = false))
                 }
             ).addTo(disposables)
     }

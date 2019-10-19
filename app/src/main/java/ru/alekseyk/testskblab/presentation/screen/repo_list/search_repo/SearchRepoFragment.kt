@@ -9,7 +9,7 @@ import ru.alekseyk.testskblab.presentation.ext.diffedValue
 import ru.alekseyk.testskblab.presentation.ext.hideKeyboard
 import ru.alekseyk.testskblab.presentation.ext.showSnackbar
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
-import ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo.list.RepositoriesAdapter
+import ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter.RepositoriesAdapter
 
 internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
     layoutResource = R.layout.fragment_search_repo

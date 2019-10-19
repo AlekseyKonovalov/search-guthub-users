@@ -1,4 +1,4 @@
-package ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo.list
+package ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter
 
 import android.view.View
 import androidx.recyclerview.widget.DiffUtil

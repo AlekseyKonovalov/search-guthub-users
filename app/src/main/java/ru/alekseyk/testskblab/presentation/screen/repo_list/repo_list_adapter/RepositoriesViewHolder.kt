@@ -1,4 +1,4 @@
-package ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo.list
+package ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter
 
 import android.view.View
 import android.widget.ImageView
@@ -34,8 +34,12 @@ internal class RepositoriesViewHolder(
 
     fun bind(item: RepositoryModel) {
         isStarred = item.isFavorite
-        Glide.with(context).load(item.ownerAvatarUrl).into(itemView.repositorysearch_item_image)
 
+        Glide.with(context).load(item.ownerAvatarUrl).into(itemView.repositorysearch_item_image)
+        itemView.repositorysearch_item_star.setImageDrawable(
+            if (isStarred) context.getDrawable(R.drawable.ic_star)
+            else context.getDrawable(R.drawable.ic_star_border)
+        )
         itemView.repositorysearch_item_name.text = item.name
         itemView.repositorysearch_item_description.text = "Description : ${item.description}"
         itemView.repositorysearch_item_owner_login.text = "Owner : ${item.ownerLogin}"

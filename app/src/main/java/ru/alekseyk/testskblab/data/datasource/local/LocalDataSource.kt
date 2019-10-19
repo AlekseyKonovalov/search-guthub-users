@@ -11,6 +11,11 @@ import ru.alekseyk.testskblab.data.db.entity.UserDbEntity
 import ru.alekseyk.testskblab.data.dto.SearchRepositoriesListDto
 
 class LocalDataSource(private val appDatabase: AppDatabase) : IDataSource {
+
+    override fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>> {
+        return appDatabase.repositoryDao().getFavoriteRepositories()
+    }
+
     override fun updateFavoriteStatus(repositoryEntity: RepositoryDbEntity): Completable {
         return appDatabase.repositoryDao().insert(repositoryEntity)
     }

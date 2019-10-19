@@ -13,6 +13,11 @@ internal class Repository(
     private val localDataSource: IDataSource,
     private val remoteDataSource: IDataSource
 ) : IRepository {
+
+    override fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>> {
+        return localDataSource.getFavoritesRepositories()
+    }
+
     override fun updateFavoriteStatus(repositoryEntity: RepositoryDbEntity): Completable {
         return  localDataSource.updateFavoriteStatus(repositoryEntity)
     }

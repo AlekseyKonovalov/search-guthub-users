@@ -19,7 +19,8 @@ internal object PresentationMapper {
             ownerId = repositoryEntity.ownerId,
             ownerLogin = repositoryEntity.ownerLogin,
             ownerAvatarUrl = repositoryEntity.ownerAvatarUrl,
-            ownerUrl = repositoryEntity.ownerUrl
+            ownerUrl = repositoryEntity.ownerUrl,
+            isFavorite = repositoryEntity.isFavorite
         )
     }
 

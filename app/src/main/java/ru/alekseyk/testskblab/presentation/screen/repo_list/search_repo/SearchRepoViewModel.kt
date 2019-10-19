@@ -43,8 +43,6 @@ internal class SearchRepoViewModel(
 
 
     private fun requestData() {
-        disposables.clear()
-
         repositoriesUseCase.getRepositoriesBySearch(currentState.searchQuery)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())

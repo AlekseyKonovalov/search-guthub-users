@@ -33,6 +33,6 @@ interface RepositoryDao {
     fun deleteAll(): Completable
 
     @Query("SELECT * FROM $TABLE_NAME WHERE isFavorite LIKE '%' || :status || '%'")
-    fun getFavoriteRepositories(status: Boolean = true): Observable<List<RepositoryDbEntity>>
+    fun getFavoriteRepositories(status: Boolean = true): Single<List<RepositoryDbEntity>>
 
 }

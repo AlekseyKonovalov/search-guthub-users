@@ -16,4 +16,6 @@ interface IDataSource {
     fun getRepositoriesBySearch(query: String): Observable<SearchRepositoriesListDto>
     fun updateFavoriteStatus(repositoryEntity: RepositoryDbEntity): Completable
 
+    fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>>
+
 }

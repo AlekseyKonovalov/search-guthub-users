@@ -18,7 +18,8 @@ internal object DomainMapper {
         ownerId: Int,
         ownerLogin: String,
         ownerAvatarUrl: String,
-        ownerUrl: String
+        ownerUrl: String,
+        isFavorite: Boolean
     ): RepositoryEntity {
         return RepositoryEntity(
             description = description,
@@ -28,7 +29,8 @@ internal object DomainMapper {
             ownerId = ownerId,
             ownerLogin = ownerLogin,
             ownerAvatarUrl = ownerAvatarUrl,
-            ownerUrl = ownerUrl
+            ownerUrl = ownerUrl,
+            isFavorite = isFavorite
         )
 
     }

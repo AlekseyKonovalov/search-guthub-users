@@ -4,5 +4,5 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val favoritesRepoModule = module {
-    viewModel { FavoritesRepoViewModel() }
+    viewModel { FavoritesRepoViewModel(get()) }
 }

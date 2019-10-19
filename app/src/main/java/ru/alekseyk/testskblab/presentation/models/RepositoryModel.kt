@@ -9,5 +9,5 @@ data class RepositoryModel(
     val ownerLogin: String,
     val ownerAvatarUrl: String,
     val ownerUrl: String,
-    val isStared: Boolean = false
+    val isFavorite: Boolean = false
 )

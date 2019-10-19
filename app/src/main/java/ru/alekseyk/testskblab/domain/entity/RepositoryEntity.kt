@@ -9,5 +9,6 @@ data class RepositoryEntity(
     val ownerId: Int,
     val ownerLogin: String,
     val ownerAvatarUrl: String,
-    val ownerUrl: String
+    val ownerUrl: String,
+    val isFavorite: Boolean = false
 )

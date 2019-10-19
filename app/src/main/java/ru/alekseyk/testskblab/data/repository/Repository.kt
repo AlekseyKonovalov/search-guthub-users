@@ -13,6 +13,9 @@ internal class Repository(
     private val localDataSource: IDataSource,
     private val remoteDataSource: IDataSource
 ) : IRepository {
+    override fun updateFavoriteStatus(repositoryEntity: RepositoryDbEntity): Completable {
+        return  localDataSource.updateFavoriteStatus(repositoryEntity)
+    }
 
     override fun getRepositoriesBySearch(query: String): Observable<SearchRepositoriesListDto> {
         return remoteDataSource.getRepositoriesBySearch(query)

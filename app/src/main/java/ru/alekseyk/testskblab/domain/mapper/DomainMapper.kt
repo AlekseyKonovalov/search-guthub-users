@@ -1,5 +1,6 @@
 package ru.alekseyk.testskblab.domain.mapper
 
+import ru.alekseyk.testskblab.data.db.entity.RepositoryDbEntity
 import ru.alekseyk.testskblab.data.db.entity.UserDbEntity
 import ru.alekseyk.testskblab.domain.entity.RepositoryEntity
 import ru.alekseyk.testskblab.domain.entity.UserEntity
@@ -31,4 +32,22 @@ internal object DomainMapper {
         )
 
     }
+
+    fun toRepositoryDbEntity(
+        repositoryEntity: RepositoryEntity
+    ): RepositoryDbEntity {
+        return RepositoryDbEntity(
+            description = repositoryEntity.description,
+            fullName = repositoryEntity.fullName,
+            id = repositoryEntity.id,
+            name = repositoryEntity.name,
+            ownerId = repositoryEntity.ownerId,
+            ownerLogin = repositoryEntity.ownerLogin,
+            ownerAvatarUrl = repositoryEntity.ownerAvatarUrl,
+            ownerUrl = repositoryEntity.ownerUrl,
+            isFavorite = repositoryEntity.isFavorite
+        )
+
+    }
+
 }

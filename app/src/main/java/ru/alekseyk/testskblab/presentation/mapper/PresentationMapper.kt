@@ -22,4 +22,20 @@ internal object PresentationMapper {
             ownerUrl = repositoryEntity.ownerUrl
         )
     }
+
+    fun toRepositoryEntity(repositoryModel: RepositoryModel): RepositoryEntity {
+        return RepositoryEntity(
+            description = repositoryModel.description,
+            fullName = repositoryModel.fullName,
+            id = repositoryModel.id,
+            name = repositoryModel.name,
+            ownerId = repositoryModel.ownerId,
+            ownerLogin = repositoryModel.ownerLogin,
+            ownerAvatarUrl = repositoryModel.ownerAvatarUrl,
+            ownerUrl = repositoryModel.ownerUrl,
+            isFavorite = repositoryModel.isFavorite
+        )
+    }
+
+
 }

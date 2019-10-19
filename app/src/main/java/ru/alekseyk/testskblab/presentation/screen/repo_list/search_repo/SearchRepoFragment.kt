@@ -19,7 +19,8 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
 
     private val adapter by lazy {
         RepositoriesAdapter(
-            onItemClick = ::onRepositoryClick
+            onItemClick = ::onRepositoryClick,
+            onActionClick = viewModel::updateFavoriteStatus
         )
     }
 

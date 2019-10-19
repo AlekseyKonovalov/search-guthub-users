@@ -1,7 +1,6 @@
 package ru.alekseyk.testskblab.presentation.screen.auth
 
 import android.accounts.AccountManager
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.isVisible
@@ -50,7 +49,7 @@ internal class AuthActivity : StateActivity<AuthViewState>(
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 123 && resultCode == Activity.RESULT_OK) {
+        if (requestCode == 123) {
             data?.let {
                 it.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)?.let {
                     viewModel.setUserData(it)

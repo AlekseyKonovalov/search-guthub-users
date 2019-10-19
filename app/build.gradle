@@ -35,6 +35,7 @@ ext {
     rxkotlin_version = "2.3.0"
     rxbinding_version = "3.0.0"
     lifecycle_version = "2.1.0"
+    glideVersion = '4.8.0'
     koin_version = "2.0.1"
     timber_version = "4.7.0"
     logging_interceptor_version = "3.6.0"
@@ -58,6 +59,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation "jp.wasabeef:glide-transformations:4.0.0"
 
     //Logging-interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"

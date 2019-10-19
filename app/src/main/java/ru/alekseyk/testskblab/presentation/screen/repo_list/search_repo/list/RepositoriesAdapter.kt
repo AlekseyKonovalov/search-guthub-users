@@ -8,7 +8,8 @@ import ru.alekseyk.testskblab.presentation.base.recycler.KeyDiffCallback
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 
 internal class RepositoriesAdapter(
-    private val onItemClick: (RepositoryModel) -> Unit
+    private val onItemClick: (RepositoryModel) -> Unit,
+    private val onActionClick: (RepositoryModel, Boolean) -> Unit
 ) : BaseAdapter<RepositoriesViewHolder>() {
 
     var items: List<RepositoryModel> = listOf()
@@ -24,7 +25,8 @@ internal class RepositoriesAdapter(
     override fun onCreateViewHolder(view: View, viewType: Int) =
         RepositoriesViewHolder(
             view,
-            ::onItemClick
+            ::onItemClick,
+            ::onActionClick
         )
 
     override fun onBindViewHolder(holder: RepositoriesViewHolder, position: Int) = holder.bind(
@@ -34,6 +36,10 @@ internal class RepositoriesAdapter(
     override fun getItemCount() = items.size
 
     private fun onItemClick(position: Int) = onItemClick.invoke(items[position])
+
+    private fun onActionClick(position: Int, status: Boolean) {
+        onActionClick.invoke(items[position], status)
+    }
 
 
 }

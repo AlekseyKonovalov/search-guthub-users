@@ -1,5 +1,6 @@
 package ru.alekseyk.testskblab.domain.usecase
 
+import io.reactivex.Completable
 import io.reactivex.Observable
 import ru.alekseyk.testskblab.domain.entity.RepositoryEntity
 import ru.alekseyk.testskblab.domain.mapper.DomainMapper
@@ -26,6 +27,11 @@ class RepositoriesUseCase(
                 }
             }
     }
+
+    fun updateFavoriteStatus(repositoryEntity: RepositoryEntity): Completable{
+        return repository.updateFavoriteStatus(DomainMapper.toRepositoryDbEntity(repositoryEntity))
+    }
+
 
 
 }

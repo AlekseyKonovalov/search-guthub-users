@@ -7,6 +7,8 @@ import io.reactivex.schedulers.Schedulers
 import ru.alekseyk.testskblab.domain.usecase.RepositoriesUseCase
 import ru.alekseyk.testskblab.presentation.base.StateViewModel
 import ru.alekseyk.testskblab.presentation.mapper.PresentationMapper
+import ru.alekseyk.testskblab.presentation.models.RepositoryModel
+import timber.log.Timber
 
 internal class SearchRepoViewModel(
     private val repositoriesUseCase: RepositoriesUseCase
@@ -14,7 +16,19 @@ internal class SearchRepoViewModel(
     defaultState = SearchRepoViewState()
 ) {
 
-
+    fun updateFavoriteStatus(repositoryModel: RepositoryModel, status: Boolean) {
+        repositoriesUseCase.updateFavoriteStatus(
+            PresentationMapper.toRepositoryEntity(
+                repositoryModel.copy(isFavorite = status)
+            )
+        ).observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribeBy(
+                onComplete = { },
+                onError = { Timber.e(it) }
+            )
+            .addTo(disposables)
+    }
 
     fun updateSearchQuery(query: String) {
         updateState(currentState.copy(searchQuery = query))

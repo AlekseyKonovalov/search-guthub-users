@@ -12,7 +12,9 @@ import ru.alekseyk.testskblab.data.repository.repositoryModule
 import ru.alekseyk.testskblab.domain.usecase.useCaseModule
 import ru.alekseyk.testskblab.presentation.screen.auth.authModule
 import ru.alekseyk.testskblab.presentation.screen.detail.detailModule
+import ru.alekseyk.testskblab.presentation.screen.repo_list.favorites_repo.favoritesRepoModule
 import ru.alekseyk.testskblab.presentation.screen.repo_list.repoListModule
+import ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo.searchRepoModule
 import timber.log.Timber
 
 class App : Application() {
@@ -35,7 +37,10 @@ class App : Application() {
                     useCaseModule,
                     repoListModule,
                     detailModule,
-                    authModule
+                    authModule,
+
+                    searchRepoModule,
+                    favoritesRepoModule
                 )
             )
         }

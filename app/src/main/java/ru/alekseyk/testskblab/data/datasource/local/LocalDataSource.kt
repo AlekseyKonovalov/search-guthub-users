@@ -13,8 +13,8 @@ class LocalDataSource(private val appDatabase: AppDatabase) : IDataSource {
         return appDatabase.userDao().getCurrentAccount()
     }
 
-    override fun setUserData(accountName: String): Completable {
-        return appDatabase.userDao().insert(UserDbEntity(accountEmail = accountName))
+    override fun setUserData(userDbEntity : UserDbEntity): Completable {
+        return appDatabase.userDao().insert(userDbEntity)
     }
 
 }

@@ -15,8 +15,8 @@ internal class Repository(
         return localDataSource.getCurrentUserData()
     }
 
-    override fun setUserData(accountName: String): Completable {
-        return localDataSource.setUserData(accountName)
+    override fun setUserData(userDbEntity: UserDbEntity): Completable {
+        return localDataSource.setUserData(userDbEntity)
     }
 
 }

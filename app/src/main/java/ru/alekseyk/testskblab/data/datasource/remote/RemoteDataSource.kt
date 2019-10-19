@@ -13,7 +13,7 @@ class RemoteDataSource(private val api: Api) : IDataSource {
         return Single.error(java.lang.Exception("Method only for LocalDataSource realization"))
     }
 
-    override fun setUserData(accountName: String): Completable {
+    override fun setUserData(userDbEntity : UserDbEntity): Completable {
         return Completable.error(Exception("Method only for LocalDataSource realization"))
     }
 

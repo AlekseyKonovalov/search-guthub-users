@@ -7,7 +7,7 @@ import ru.alekseyk.testskblab.data.db.entity.UserDbEntity
 
 interface IDataSource {
 
-    fun setUserData(accountName: String): Completable
+    fun setUserData(userDbEntity : UserDbEntity): Completable
     fun getCurrentUserData(): Single<List<UserDbEntity>>
 
 }

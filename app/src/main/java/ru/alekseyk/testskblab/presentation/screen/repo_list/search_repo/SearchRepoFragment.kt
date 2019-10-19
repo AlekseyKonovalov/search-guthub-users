@@ -1,7 +1,5 @@
 package ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo
 
-import android.os.Bundle
-import android.view.View
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.fragment_search_repo.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -23,11 +21,6 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
         RepositoriesAdapter(
             onItemClick = ::onRepositoryClick
         )
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.updateSearchQuery("android")
     }
 
     override fun initViews() {

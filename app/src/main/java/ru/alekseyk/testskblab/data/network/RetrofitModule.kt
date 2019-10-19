@@ -11,12 +11,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.alekseyk.testskblab.data.prefs.AppPrefs
 import timber.log.Timber
 
-private const val API_ENDPOINT = "https://api.pexels.com/"
+private const val GITHUB_API_URL = "https://api.github.com"
 private const val KEY_HEADER_USER_API_KEY = "USER-API-KEY"
 
 val retrofitModule = module {
 
-    single { createApiService<Api>(get(), API_ENDPOINT) }
+    single { createApiService<Api>(get(), GITHUB_API_URL) }
 
     factory { createLoggingInterceptor() }
 

@@ -11,6 +11,15 @@ internal object PresentationMapper {
     }
 
     fun toRepositoryModel(repositoryEntity: RepositoryEntity): RepositoryModel {
-        return RepositoryModel(name = repositoryEntity.name)
+        return RepositoryModel(
+            description = repositoryEntity.description,
+            fullName = repositoryEntity.fullName,
+            id = repositoryEntity.id,
+            name = repositoryEntity.name,
+            ownerId = repositoryEntity.ownerId,
+            ownerLogin = repositoryEntity.ownerLogin,
+            ownerAvatarUrl = repositoryEntity.ownerAvatarUrl,
+            ownerUrl = repositoryEntity.ownerUrl
+        )
     }
 }

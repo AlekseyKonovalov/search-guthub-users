@@ -11,7 +11,20 @@ class RepositoriesUseCase(
 
     fun getRepositoriesBySearch(searchKey: String): Observable<List<RepositoryEntity>> {
         return repository.getRepositoriesBySearch(searchKey)
-            .map { it.map { DomainMapper.toRepositoryEntity(it) } }
+            .map {
+                it.items?.map {
+                    DomainMapper.toRepositoryEntity(
+                        description = it.description,
+                        fullName = it.fullName,
+                        id = it.id,
+                        name = it.name,
+                        ownerId = it.owner.id,
+                        ownerLogin = it.owner.login,
+                        ownerAvatarUrl = it.owner.avatarUrl,
+                        ownerUrl = it.owner.url
+                    )
+                }
+            }
     }
 
 

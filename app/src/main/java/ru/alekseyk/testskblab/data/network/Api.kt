@@ -1,20 +1,15 @@
 package ru.alekseyk.testskblab.data.network
 
+import io.reactivex.Observable
+import retrofit2.http.GET
+import retrofit2.http.Query
+import ru.alekseyk.testskblab.data.dto.SearchRepositoriesListDto
+
 
 interface Api {
 
-/*    // USER
-    @POST("/user")
-    fun createUser(@Body userDto: UserFormDto): Single<UserDto>
-
-    @GET("/user/{id}")
-    fun getUser(@Path("id") id: Int): Single<UserDto>
-
-    @POST("/user/{id}")
-    fun updateUser(@Body userDto: UserFormDto): Single<ResponseBody>*/
-
-
-
-
+    // repositories
+    @GET("/search/repositories")
+    fun searchRepositoriesByQuery(@Query("q") query: String): Observable<SearchRepositoriesListDto>
 
 }

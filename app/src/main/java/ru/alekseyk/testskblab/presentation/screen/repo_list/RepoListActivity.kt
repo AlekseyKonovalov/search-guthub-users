@@ -1,7 +1,7 @@
 package ru.alekseyk.testskblab.presentation.screen.repo_list
 
-import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.activity_repolist.*
+import android.content.Context
+import android.content.Intent
 import org.koin.android.viewmodel.ext.android.viewModel
 import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.StateActivity
@@ -17,4 +17,11 @@ internal class RepoListActivity : StateActivity<RepoListViewState>(
 
     override fun initViews() {
     }
+
+    companion object {
+        fun startActivity(context: Context) {
+            context.startActivity(Intent(context, RepoListActivity::class.java))
+        }
+    }
+
 }

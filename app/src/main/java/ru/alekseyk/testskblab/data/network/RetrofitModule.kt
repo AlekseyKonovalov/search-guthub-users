@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.alekseyk.testskblab.data.prefs.AppPrefs
 import timber.log.Timber
 
-private const val API_ENDPOINT = ""
+private const val API_ENDPOINT = "https://api.pexels.com/"
 private const val KEY_HEADER_USER_API_KEY = "USER-API-KEY"
 
 val retrofitModule = module {
@@ -41,7 +41,6 @@ fun createNetworkInterceptor(prefs: AppPrefs): Interceptor {
         it.proceed(request)
     }
 }
-
 
 fun createOkHttpClient(
     loggingInterceptor: HttpLoggingInterceptor,

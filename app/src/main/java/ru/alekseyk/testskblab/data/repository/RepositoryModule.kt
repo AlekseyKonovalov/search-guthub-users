@@ -1,4 +1,4 @@
-package ru.alekseyk.testskblab.repository
+package ru.alekseyk.testskblab.data.repository
 
 import org.koin.core.qualifier.named
 import org.koin.dsl.module

@@ -4,7 +4,7 @@ import android.content.Context
 import ru.alekseyk.testskblab.data.ext.putPrimitiveValue
 
 private const val PREFS_APP = "app_prefs"
-private const val PREF_TOKEN = "token"
+private const val PREF_TOKEN = "user_data"
 
 class AppPrefs(context: Context) {
 

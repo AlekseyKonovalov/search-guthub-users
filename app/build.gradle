@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
@@ -86,5 +88,7 @@ dependencies {
 
     // Stetho
     implementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
+
+    implementation 'com.google.android.gms:play-services-auth:11.8.0'
 
 }

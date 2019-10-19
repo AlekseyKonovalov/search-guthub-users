@@ -39,12 +39,11 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-        <com.google.android.material.button.MaterialButton
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/black"
-            android:text="sign in with google"
-            android:layout_gravity="center"/>
+            android:layout_height="wrap_content"/>
 
         <ProgressBar
             android:visibility="gone"

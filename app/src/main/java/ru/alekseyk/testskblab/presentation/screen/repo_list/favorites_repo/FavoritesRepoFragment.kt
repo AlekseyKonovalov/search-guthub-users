@@ -10,9 +10,13 @@ internal class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
     layoutResource = R.layout.fragment_favorites_repo
 ) {
 
-    override val viewModel by viewModel<FavoritesRepoViewModel> ()
+
+    override val viewModel by viewModel<FavoritesRepoViewModel>()
 
     override fun initViews() {
+
+    }
+    override fun initListeners() {
 
     }
 

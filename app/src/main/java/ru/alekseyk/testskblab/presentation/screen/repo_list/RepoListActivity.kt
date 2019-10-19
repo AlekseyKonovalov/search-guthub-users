@@ -20,6 +20,8 @@ internal class RepoListActivity : StateActivity<RepoListViewState>(
     }
 
     override fun initViews() {
+        general_toolbar.title="Github repositories"
+
         (container as ViewGroup).layoutTransition.apply {
             enableTransitionType(LayoutTransition.APPEARING)
             enableTransitionType(LayoutTransition.DISAPPEARING)

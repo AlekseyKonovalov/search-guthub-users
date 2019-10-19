@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -26,9 +27,11 @@ internal abstract class BaseFragment(
         return inflater.inflate(layoutResource, null)
     }
 
+    @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        initListeners()
     }
 
     override fun onStart() {
@@ -38,6 +41,7 @@ internal abstract class BaseFragment(
 
     protected abstract fun initViewModelObserving()
     protected abstract fun initViews()
+    protected abstract fun initListeners()
 
     protected open fun showLoading(isShow: Boolean) {}
     protected open fun showError(errorMessage: String) {}

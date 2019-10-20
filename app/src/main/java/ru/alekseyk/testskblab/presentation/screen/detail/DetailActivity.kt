@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.StateActivity
+import ru.alekseyk.testskblab.presentation.ext.setNavigationOnClickListener
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 
 internal class DetailActivity : StateActivity<DetailViewState>(
@@ -19,6 +20,10 @@ internal class DetailActivity : StateActivity<DetailViewState>(
         intent!!.getSerializableExtra(
             EXTRA_REPOSITORY_MODEL
         ) as RepositoryModel
+    }
+
+    override fun initListeners() {
+        general_toolbar?.setNavigationOnClickListener(::finish)
     }
 
     override fun render(state: DetailViewState) {

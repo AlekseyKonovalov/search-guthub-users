@@ -33,12 +33,9 @@ internal class AuthActivity : StateActivity<AuthViewState>(
         }
     }
 
-    override fun initViews() {
-
-    }
+    override fun initViews() {}
 
     override fun initListeners() {
-        super.initListeners()
         sign_in_button.setOnClickListener {
             val intent = AccountPicker.newChooseAccountIntent(
                 null, null, arrayOf("com.google"),

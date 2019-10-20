@@ -43,6 +43,8 @@ internal class RepoListActivity : StateActivity<RepoListViewState>(
         }
     }
 
+    override fun initListeners() {}
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)

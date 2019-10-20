@@ -2,7 +2,6 @@ package ru.alekseyk.testskblab.data.db.dao
 
 import androidx.room.*
 import io.reactivex.Completable
-import io.reactivex.Observable
 import io.reactivex.Single
 import ru.alekseyk.testskblab.data.db.entity.UserDbEntity
 
@@ -13,7 +12,7 @@ private const val TABLE_NAME = "UserDbEntity"
 interface UserDao {
 
     @Query("SELECT * FROM $TABLE_NAME")
-    fun getAll(): Observable<List<UserDbEntity>>
+    fun getAll(): Single<List<UserDbEntity>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id LIKE :id")
     fun getById(id: Int): Single<List<UserDbEntity>>
@@ -32,8 +31,5 @@ interface UserDao {
 
     @Query("DELETE FROM $TABLE_NAME")
     fun deleteAll(): Completable
-
-    @Query("SELECT * FROM $TABLE_NAME WHERE isSignIn LIKE '%' || :status || '%'")
-    fun getCurrentAccount(status: Boolean = true): Single<List<UserDbEntity>>
 
 }

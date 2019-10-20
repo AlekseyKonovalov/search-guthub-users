@@ -15,4 +15,5 @@ interface IRepository {
     fun updateFavoriteStatus(repositoryEntity: RepositoryDbEntity): Completable
 
     fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>>
+    fun deleteUserData(): Completable
 }

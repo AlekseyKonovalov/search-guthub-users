@@ -18,4 +18,6 @@ interface IDataSource {
 
     fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>>
 
+    fun deleteUserData(): Completable
+
 }

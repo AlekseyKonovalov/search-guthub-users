@@ -1,6 +1,7 @@
 package ru.alekseyk.testskblab.presentation.screen.auth
 
 import android.accounts.AccountManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.isVisible
@@ -55,6 +56,12 @@ internal class AuthActivity : StateActivity<AuthViewState>(
                     viewModel.setUserData(it)
                 }
             }
+        }
+    }
+
+    companion object {
+        fun startActivity(context: Context) {
+            context.startActivity(Intent(context, AuthActivity::class.java))
         }
     }
 

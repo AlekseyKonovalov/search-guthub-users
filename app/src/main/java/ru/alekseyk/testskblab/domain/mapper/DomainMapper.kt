@@ -7,7 +7,7 @@ import ru.alekseyk.testskblab.domain.entity.UserEntity
 
 internal object DomainMapper {
     fun toUserDbEntity(userEntity: UserEntity): UserDbEntity {
-        return UserDbEntity(accountEmail = userEntity.accountEmail, isSignIn = userEntity.isSignIn)
+        return UserDbEntity(accountEmail = userEntity.accountEmail)
     }
 
     fun toRepositoryEntity(

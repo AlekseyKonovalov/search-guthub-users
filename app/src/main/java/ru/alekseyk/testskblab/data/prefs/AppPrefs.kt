@@ -4,7 +4,7 @@ import android.content.Context
 import ru.alekseyk.testskblab.data.ext.putPrimitiveValue
 
 private const val PREFS_APP = "app_prefs"
-private const val PREF_TOKEN = "user_data"
+private const val PREF_USER_DATA = "user_data"
 
 class AppPrefs(context: Context) {
 
@@ -14,16 +14,16 @@ class AppPrefs(context: Context) {
         sharedPreferences.edit().clear().apply()
     }
 
-    fun saveToken(token: String) {
-        sharedPreferences.putPrimitiveValue(PREF_TOKEN, token)
+    fun saveCurrentUser(token: String) {
+        sharedPreferences.putPrimitiveValue(PREF_USER_DATA, token)
     }
 
-    fun getToken(): String? {
-        return sharedPreferences.getString(PREF_TOKEN, "")
+    fun getCurrentUser(): String? {
+        return sharedPreferences.getString(PREF_USER_DATA, "")
     }
 
-    fun removeToken() {
-        sharedPreferences.edit().remove(PREF_TOKEN).apply()
+    fun removeCurrentUser() {
+        sharedPreferences.edit().remove(PREF_USER_DATA).apply()
     }
 
 }

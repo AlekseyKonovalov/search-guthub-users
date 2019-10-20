@@ -41,4 +41,8 @@ internal class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
     private fun onRepositoryClick(repositoryModel: RepositoryModel) {
         activity?.let { DetailActivity.startActivity(it, repositoryModel) }
     }
+
+    fun updateFavoritesList(){
+        viewModel.getFavoritesRepositories()
+    }
 }

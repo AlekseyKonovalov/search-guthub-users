@@ -32,17 +32,14 @@ internal class SearchRepoViewModel(
 
     fun updateSearchQuery(query: String) {
         updateState(currentState.copy(searchQuery = query))
-
         if (query.isBlank()) {
             updateState(currentState.copy(payload = emptyList(), isLoading = false))
             return
         }
-
         requestData()
     }
 
-
-    private fun requestData() {
+    fun requestData() {
         repositoriesUseCase.getRepositoriesBySearch(currentState.searchQuery)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())

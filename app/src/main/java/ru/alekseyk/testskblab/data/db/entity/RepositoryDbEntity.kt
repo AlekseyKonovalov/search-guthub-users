@@ -30,5 +30,7 @@ data class RepositoryDbEntity(
     @ColumnInfo
     val forksCount: Int,
     @ColumnInfo
-    val createdAt: String
+    val createdAt: String,
+    @ColumnInfo
+    val accountEmail: String? = null
 )

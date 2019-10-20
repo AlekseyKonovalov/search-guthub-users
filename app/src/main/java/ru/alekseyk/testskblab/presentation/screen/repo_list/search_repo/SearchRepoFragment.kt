@@ -31,8 +31,7 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
     override fun initListeners() {
         search_key_edt.listenChanges(
             stateDifferentiator = currentState::searchQuery,
-            resultApplier = viewModel::updateSearchQuery,
-            debounce = true
+            resultApplier = viewModel::updateSearchQuery
         )
         repolist_parcelnumber_clear_btn.setOnClickListener { search_key_edt.text.clear() }
 
@@ -60,6 +59,10 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
 
     private fun onRepositoryClick(repositoryModel: RepositoryModel) {
         activity?.let { DetailActivity.startActivity(it, repositoryModel) }
+    }
+
+    fun updateSearch(){
+        viewModel.requestData()
     }
 
 }

@@ -11,7 +11,5 @@ data class UserDbEntity(
     @ColumnInfo
     val id: Int = 0,
     @ColumnInfo
-    val accountEmail: String,
-    @ColumnInfo
-    val isSignIn: Boolean = false
+    val accountEmail: String
 )

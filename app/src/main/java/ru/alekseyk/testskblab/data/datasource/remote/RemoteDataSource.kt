@@ -11,6 +11,9 @@ import ru.alekseyk.testskblab.data.network.Api
 
 
 class RemoteDataSource(private val api: Api) : IDataSource {
+    override fun deleteUserData(): Completable {
+        return Completable.error(Exception("Method only for LocalDataSource realization"))
+    }
 
     override fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>> {
         return Single.error(Exception("Method only for LocalDataSource realization"))

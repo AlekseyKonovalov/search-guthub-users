@@ -12,7 +12,6 @@ import ru.alekseyk.testskblab.data.prefs.AppPrefs
 import timber.log.Timber
 
 private const val GITHUB_API_URL = "https://api.github.com"
-private const val KEY_HEADER_USER_API_KEY = "USER-API-KEY"
 
 val retrofitModule = module {
 
@@ -36,7 +35,6 @@ fun createLoggingInterceptor(): HttpLoggingInterceptor {
 fun createNetworkInterceptor(prefs: AppPrefs): Interceptor {
     return Interceptor {
         val request = it.request().newBuilder()
-            .addHeader(KEY_HEADER_USER_API_KEY, prefs.getToken() ?: "")
             .build()
         it.proceed(request)
     }

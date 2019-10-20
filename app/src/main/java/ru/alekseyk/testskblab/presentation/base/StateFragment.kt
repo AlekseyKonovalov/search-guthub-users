@@ -1,14 +1,15 @@
 package ru.alekseyk.testskblab.presentation.base
 
-import android.widget.TextView
+import android.widget.EditText
 import androidx.annotation.LayoutRes
-import com.jakewharton.rxbinding3.widget.textChanges
 import io.reactivex.Observable
+import io.reactivex.ObservableOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import ru.alekseyk.testskblab.presentation.ext.addTextChangedListener
 import ru.alekseyk.testskblab.presentation.ext.distinctByValue
 import java.util.concurrent.TimeUnit
 
@@ -42,22 +43,23 @@ internal abstract class StateFragment<ViewState : Any>(
 
     protected abstract fun render(state: ViewState)
 
-    protected fun TextView.listenChanges(
+    protected fun EditText.listenChanges(
         stateDifferentiator: () -> String,
-        resultApplier: (String) -> Unit,
-        debounce: Boolean = false
+        resultApplier: (String) -> Unit
     ) {
-        var textChangedListener: Observable<CharSequence> = textChanges()
-
-        if (debounce) textChangedListener = textChangedListener.debounce(
-            500, TimeUnit.MILLISECONDS
-        )
-
-        textChangedListener
-            .map(CharSequence::toString)
+        Observable.create(ObservableOnSubscribe<String> { subscriber ->
+            this.addTextChangedListener {
+                subscriber.onNext(it)
+            }
+        })
+            .map { text -> text.toLowerCase().trim() }
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .distinct()
+            .filter { text -> text.isNotBlank() }
             .distinctByValue(stateDifferentiator::invoke)
             .subscribeBy(onNext = resultApplier::invoke)
             .addTo(viewDisposable)
+
     }
 
 }

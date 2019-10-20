@@ -4,5 +4,5 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val repoListModule= module {
-    viewModel { RepoListViewModel() }
+    viewModel { RepoListViewModel(get()) }
 }

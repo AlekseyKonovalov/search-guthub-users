@@ -11,6 +11,10 @@ class UserUseCase(
     private val repository: IRepository
 ) {
 
+    fun deleteUserData(): Completable {
+        return repository.deleteUserData()
+    }
+
     fun setUserData(userEntity: UserEntity): Completable {
         return repository.setUserData(DomainMapper.toUserDbEntity(userEntity))
     }

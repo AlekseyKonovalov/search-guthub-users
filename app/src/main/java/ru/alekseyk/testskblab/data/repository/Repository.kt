@@ -14,6 +14,10 @@ internal class Repository(
     private val remoteDataSource: IDataSource
 ) : IRepository {
 
+    override fun deleteUserData(): Completable {
+        return localDataSource.deleteUserData()
+    }
+
     override fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>> {
         return localDataSource.getFavoritesRepositories()
     }

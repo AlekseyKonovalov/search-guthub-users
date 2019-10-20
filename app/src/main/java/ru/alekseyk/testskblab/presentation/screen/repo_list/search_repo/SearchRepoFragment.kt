@@ -7,8 +7,8 @@ import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.StateFragment
 import ru.alekseyk.testskblab.presentation.ext.diffedValue
 import ru.alekseyk.testskblab.presentation.ext.hideKeyboard
-import ru.alekseyk.testskblab.presentation.ext.showSnackbar
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
+import ru.alekseyk.testskblab.presentation.screen.detail.DetailActivity
 import ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter.RepositoriesAdapter
 
 internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
@@ -59,7 +59,7 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
 
 
     private fun onRepositoryClick(repositoryModel: RepositoryModel) {
-        activity?.showSnackbar(repositoryModel.name, container)
+        activity?.let { DetailActivity.startActivity(it, repositoryModel) }
     }
 
 }

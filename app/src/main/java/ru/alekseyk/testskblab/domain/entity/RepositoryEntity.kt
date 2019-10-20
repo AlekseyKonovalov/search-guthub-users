@@ -10,5 +10,8 @@ data class RepositoryEntity(
     val ownerLogin: String,
     val ownerAvatarUrl: String,
     val ownerUrl: String,
-    val isFavorite: Boolean = false
+    val isFavorite: Boolean = false,
+    val stargazersCount: Int,
+    val forksCount: Int,
+    val createdAt: String
 )

@@ -19,7 +19,10 @@ internal object DomainMapper {
         ownerLogin: String,
         ownerAvatarUrl: String,
         ownerUrl: String,
-        isFavorite: Boolean
+        isFavorite: Boolean,
+        stargazersCount: Int,
+        forksCount: Int,
+        createdAt: String
     ): RepositoryEntity {
         return RepositoryEntity(
             description = description,
@@ -30,7 +33,10 @@ internal object DomainMapper {
             ownerLogin = ownerLogin,
             ownerAvatarUrl = ownerAvatarUrl,
             ownerUrl = ownerUrl,
-            isFavorite = isFavorite
+            isFavorite = isFavorite,
+            stargazersCount = stargazersCount,
+            forksCount = forksCount,
+            createdAt = createdAt
         )
 
     }
@@ -47,7 +53,10 @@ internal object DomainMapper {
             ownerLogin = repositoryEntity.ownerLogin,
             ownerAvatarUrl = repositoryEntity.ownerAvatarUrl,
             ownerUrl = repositoryEntity.ownerUrl,
-            isFavorite = repositoryEntity.isFavorite
+            isFavorite = repositoryEntity.isFavorite,
+            stargazersCount = repositoryEntity.stargazersCount,
+            forksCount = repositoryEntity.forksCount,
+            createdAt = repositoryEntity.createdAt
         )
 
     }

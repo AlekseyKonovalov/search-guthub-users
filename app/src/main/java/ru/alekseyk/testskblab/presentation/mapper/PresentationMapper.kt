@@ -20,7 +20,10 @@ internal object PresentationMapper {
             ownerLogin = repositoryEntity.ownerLogin,
             ownerAvatarUrl = repositoryEntity.ownerAvatarUrl,
             ownerUrl = repositoryEntity.ownerUrl,
-            isFavorite = repositoryEntity.isFavorite
+            isFavorite = repositoryEntity.isFavorite,
+            stargazersCount = repositoryEntity.stargazersCount,
+            forksCount = repositoryEntity.forksCount,
+            createdAt = repositoryEntity.createdAt
         )
     }
 
@@ -34,7 +37,10 @@ internal object PresentationMapper {
             ownerLogin = repositoryModel.ownerLogin,
             ownerAvatarUrl = repositoryModel.ownerAvatarUrl,
             ownerUrl = repositoryModel.ownerUrl,
-            isFavorite = repositoryModel.isFavorite
+            isFavorite = repositoryModel.isFavorite,
+            stargazersCount = repositoryModel.stargazersCount,
+            forksCount = repositoryModel.forksCount,
+            createdAt = repositoryModel.createdAt
         )
     }
 

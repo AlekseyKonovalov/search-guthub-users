@@ -24,7 +24,10 @@ class RepositoriesUseCase(
                         ownerLogin = it.owner.login,
                         ownerAvatarUrl = it.owner.avatarUrl,
                         ownerUrl = it.owner.url,
-                        isFavorite = false
+                        isFavorite = false,
+                        stargazersCount = it.stargazersCount,
+                        forksCount = it.forksCount,
+                        createdAt = it.createdAt
                     )
                 }
             }
@@ -48,7 +51,10 @@ class RepositoriesUseCase(
                         ownerLogin = it.ownerLogin,
                         ownerAvatarUrl = it.ownerAvatarUrl,
                         ownerUrl = it.ownerUrl,
-                        isFavorite = it.isFavorite
+                        isFavorite = it.isFavorite,
+                        stargazersCount = it.stargazersCount,
+                        forksCount = it.forksCount,
+                        createdAt = it.createdAt
 
                     )
                 }

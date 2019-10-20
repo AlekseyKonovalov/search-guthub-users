@@ -24,5 +24,11 @@ data class RepositoryDbEntity(
     @ColumnInfo
     val ownerUrl: String,
     @ColumnInfo
-    val isFavorite: Boolean = false
+    val isFavorite: Boolean = false,
+    @ColumnInfo
+    val stargazersCount: Int,
+    @ColumnInfo
+    val forksCount: Int,
+    @ColumnInfo
+    val createdAt: String
 )

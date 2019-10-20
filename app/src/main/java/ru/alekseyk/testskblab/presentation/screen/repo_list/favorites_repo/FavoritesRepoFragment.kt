@@ -5,8 +5,8 @@ import kotlinx.android.synthetic.main.fragment_favorites_repo.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.StateFragment
-import ru.alekseyk.testskblab.presentation.ext.showSnackbar
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
+import ru.alekseyk.testskblab.presentation.screen.detail.DetailActivity
 import ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter.RepositoriesAdapter
 
 internal class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
@@ -39,6 +39,6 @@ internal class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
     }
 
     private fun onRepositoryClick(repositoryModel: RepositoryModel) {
-        activity?.showSnackbar(repositoryModel.name, container)
+        activity?.let { DetailActivity.startActivity(it, repositoryModel) }
     }
 }

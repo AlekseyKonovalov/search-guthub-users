@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputLayout
 import io.reactivex.Observable
 
@@ -120,4 +121,14 @@ fun TextView.setTextColorCompat(@ColorRes color: Int) = setTextColor(context.get
 
 fun Button.setBackgroundTint(@ColorRes color: Int) {
     backgroundTintList = ContextCompat.getColorStateList(context, color)
+}
+
+fun TabLayout.switchTab(listener: (TabLayout.Tab) -> Unit){
+    this.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        override fun onTabReselected(p0: TabLayout.Tab?) {}
+        override fun onTabUnselected(p0: TabLayout.Tab?) {}
+        override fun onTabSelected(currentTab: TabLayout.Tab) {
+            listener.invoke(currentTab)
+        }
+    })
 }

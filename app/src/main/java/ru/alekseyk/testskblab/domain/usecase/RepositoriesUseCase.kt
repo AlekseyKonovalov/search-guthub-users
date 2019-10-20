@@ -14,17 +14,17 @@ class RepositoriesUseCase(
     fun getRepositoriesBySearch(searchKey: String): Observable<List<RepositoryEntity>> {
         return repository.getRepositoriesBySearch(searchKey)
             .map {
-                it.items?.map {
+                it.map {
                     DomainMapper.toRepositoryEntity(
                         description = it.description,
                         fullName = it.fullName,
                         id = it.id,
                         name = it.name,
-                        ownerId = it.owner.id,
-                        ownerLogin = it.owner.login,
-                        ownerAvatarUrl = it.owner.avatarUrl,
-                        ownerUrl = it.owner.url,
-                        isFavorite = false,
+                        ownerId = it.ownerId,
+                        ownerLogin = it.ownerLogin,
+                        ownerAvatarUrl = it.ownerAvatarUrl,
+                        ownerUrl = it.ownerUrl,
+                        isFavorite = it.isFavorite,
                         stargazersCount = it.stargazersCount,
                         forksCount = it.forksCount,
                         createdAt = it.createdAt
@@ -40,7 +40,6 @@ class RepositoriesUseCase(
     fun getFavoritesRepositories(): Single<List<RepositoryEntity>> {
         return repository.getFavoritesRepositories()
             .map {
-
                 it.map {
                     DomainMapper.toRepositoryEntity(
                         description = it.description,

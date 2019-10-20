@@ -5,13 +5,12 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import ru.alekseyk.testskblab.data.db.entity.RepositoryDbEntity
 import ru.alekseyk.testskblab.data.db.entity.UserDbEntity
-import ru.alekseyk.testskblab.data.dto.SearchRepositoriesListDto
 
 interface IRepository {
     fun setUserData(userDbEntity: UserDbEntity): Completable
     fun getCurrentUserData(): Single<List<UserDbEntity>>
 
-    fun getRepositoriesBySearch(query: String): Observable<SearchRepositoriesListDto>
+    fun getRepositoriesBySearch(query: String): Observable<List<RepositoryDbEntity>>
     fun updateFavoriteStatus(repositoryEntity: RepositoryDbEntity): Completable
 
     fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>>

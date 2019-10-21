@@ -1,5 +1,6 @@
 package ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo
 
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -9,6 +10,7 @@ import ru.alekseyk.testskblab.presentation.base.StateViewModel
 import ru.alekseyk.testskblab.presentation.mapper.PresentationMapper
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 internal class SearchRepoViewModel(
     private val repositoriesUseCase: RepositoriesUseCase
@@ -31,15 +33,35 @@ internal class SearchRepoViewModel(
     }
 
     fun updateSearchQuery(query: String) {
-        updateState(currentState.copy(searchQuery = query))
-        if (query.isBlank()) {
+        Observable.just(query)
+            .map { text -> text.toLowerCase().trim() }
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .distinct()
+            .subscribeBy(onNext = {
+                updateState(currentState.copy(searchQuery = query))
+                requestData()
+            })
+            .addTo(disposables)
+
+
+/*        updateState(currentState.copy(searchQuery = query))
+*//*        if (query.isBlank()) {
             updateState(currentState.copy(payload = emptyList(), isLoading = false))
             return
-        }
-        requestData()
+        }*//*
+        requestData()*/
     }
 
     fun requestData() {
+        if(currentState.searchQuery.isNullOrEmpty()){
+            updateState(
+                currentState.copy(
+                    isLoading = false,
+                    payload = listOf())
+            )
+            return
+        }
+
         repositoriesUseCase.getRepositoriesBySearch(currentState.searchQuery)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
@@ -52,7 +74,10 @@ internal class SearchRepoViewModel(
                             payload = it.map { PresentationMapper.toRepositoryModel(it) })
                     )
                 },
-                onError = { updateState(currentState.copy(isLoading = false)) }
+                onError = {
+                    Timber.e(it)
+                    updateState(currentState.copy(isLoading = false))
+                }
             )
             .addTo(disposables)
     }

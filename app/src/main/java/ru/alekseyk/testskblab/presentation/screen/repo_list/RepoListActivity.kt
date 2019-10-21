@@ -37,6 +37,9 @@ internal class RepoListActivity : StateActivity<RepoListViewState>(
         tab_layout.setupWithViewPager(view_pager)
         tab_layout.switchTab {
             view_pager.currentItem = it.position
+            if (it.position == 0) {
+                (supportFragmentManager.fragments[0] as SearchRepoFragment).updateSearch()
+            }
             if (it.position == 1) {
                 (supportFragmentManager.fragments[1] as FavoritesRepoFragment).updateFavoritesList()
             }

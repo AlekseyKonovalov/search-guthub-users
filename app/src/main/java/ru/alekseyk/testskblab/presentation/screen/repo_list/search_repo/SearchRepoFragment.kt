@@ -5,6 +5,7 @@ import kotlinx.android.synthetic.main.fragment_search_repo.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.StateFragment
+import ru.alekseyk.testskblab.presentation.ext.addTextChangedListener
 import ru.alekseyk.testskblab.presentation.ext.diffedValue
 import ru.alekseyk.testskblab.presentation.ext.hideKeyboard
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
@@ -29,10 +30,9 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
     }
 
     override fun initListeners() {
-        search_key_edt.listenChanges(
-            stateDifferentiator = currentState::searchQuery,
-            resultApplier = viewModel::updateSearchQuery
-        )
+        search_key_edt.addTextChangedListener {
+            viewModel.updateSearchQuery(it)
+        }
         repolist_parcelnumber_clear_btn.setOnClickListener { search_key_edt.text.clear() }
 
     }
@@ -42,6 +42,7 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
         val isSearchMode = state.isSearchMode
 
         repo_list_parcels_rv.isVisible = !isItemsListEmpty
+        search_placeholder_layout.isVisible = isItemsListEmpty
 
         repolist_parcelnumber_clear_btn.isVisible = isSearchMode
         general_progressbar.isVisible = state.isLoading
@@ -61,7 +62,7 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
         activity?.let { DetailActivity.startActivity(it, repositoryModel) }
     }
 
-    fun updateSearch(){
+    fun updateSearch() {
         viewModel.requestData()
     }
 

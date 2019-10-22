@@ -8,7 +8,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.alekseyk.testskblab.data.prefs.AppPrefs
 import timber.log.Timber
 
 private const val GITHUB_API_URL = "https://api.github.com"
@@ -21,7 +20,7 @@ val retrofitModule = module {
 
     factory { createOkHttpClient(get(), get()) }
 
-    factory { createNetworkInterceptor(get()) }
+    factory { createNetworkInterceptor() }
 }
 
 fun createLoggingInterceptor(): HttpLoggingInterceptor {
@@ -32,7 +31,7 @@ fun createLoggingInterceptor(): HttpLoggingInterceptor {
     return logging
 }
 
-fun createNetworkInterceptor(prefs: AppPrefs): Interceptor {
+fun createNetworkInterceptor(): Interceptor {
     return Interceptor {
         val request = it.request().newBuilder()
             .build()
@@ -48,7 +47,6 @@ fun createOkHttpClient(
         .addInterceptor(loggingInterceptor)
         .addNetworkInterceptor(interceptor)
         .addNetworkInterceptor(StethoInterceptor())
-        .hostnameVerifier { _, _ -> true }
         .retryOnConnectionFailure(false)
         .build()
 }

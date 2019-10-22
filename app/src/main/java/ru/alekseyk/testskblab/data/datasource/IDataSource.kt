@@ -8,16 +8,12 @@ import ru.alekseyk.testskblab.data.dto.SearchRepositoriesListDto
 
 
 interface IDataSource {
-
     fun setUserData(accountEmail : String): Completable
     fun getCurrentUserData(): Single<String>
-
     fun getRepositoriesBySearch(query: String): Observable<SearchRepositoriesListDto>
     fun getFavoritesRepositories(): Single<List<RepositoryDbEntity>>
-
     fun addToFavoritesRepositories(repositoryEntity: RepositoryDbEntity): Completable
     fun deleteFromFavoritesRepositories(repositoryEntity: RepositoryDbEntity): Completable
-
     fun deleteUserData(): Completable
 
 }

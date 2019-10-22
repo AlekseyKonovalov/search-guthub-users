@@ -6,7 +6,6 @@ import ru.alekseyk.testskblab.data.db.dao.RepositoryDao
 import ru.alekseyk.testskblab.data.db.entity.RepositoryDbEntity
 
 @Database(entities = [RepositoryDbEntity::class], version = 1)
-/*@TypeConverters(DbConverters::class)*/
-abstract class AppDatabase() : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun repositoryDao(): RepositoryDao
 }

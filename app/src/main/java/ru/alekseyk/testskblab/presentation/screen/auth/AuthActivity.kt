@@ -13,7 +13,7 @@ import ru.alekseyk.testskblab.presentation.base.StateActivity
 import ru.alekseyk.testskblab.presentation.screen.repo_list.RepoListActivity
 
 
-internal class AuthActivity : StateActivity<AuthViewState>(
+class AuthActivity : StateActivity<AuthViewState>(
     layoutResource = R.layout.activity_auth
 ) {
 

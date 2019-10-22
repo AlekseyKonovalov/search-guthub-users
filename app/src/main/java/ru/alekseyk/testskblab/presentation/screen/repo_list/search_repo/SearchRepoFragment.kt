@@ -12,7 +12,7 @@ import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 import ru.alekseyk.testskblab.presentation.screen.detail.DetailActivity
 import ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter.RepositoriesAdapter
 
-internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
+class SearchRepoFragment : StateFragment<SearchRepoViewState>(
     layoutResource = R.layout.fragment_search_repo
 ) {
 
@@ -33,7 +33,8 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
         search_key_edt.addTextChangedListener {
             viewModel.updateSearchQuery(it)
         }
-        repolist_parcelnumber_clear_btn.setOnClickListener { search_key_edt.text.clear() }
+        repolist_search_clear_btn.setOnClickListener { search_key_edt.text.clear() }
+        repolist_search_btn.setOnClickListener { updateSearch() }
 
     }
 
@@ -44,7 +45,7 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
         repo_list_parcels_rv.isVisible = !isItemsListEmpty
         search_placeholder_layout.isVisible = isItemsListEmpty && !isSearchMode
 
-        repolist_parcelnumber_clear_btn.isVisible = isSearchMode
+        repolist_search_clear_btn.isVisible = isSearchMode
         general_progressbar.isVisible = state.isLoading && isSearchMode
 
         search_key_edt.diffedValue = state.searchQuery

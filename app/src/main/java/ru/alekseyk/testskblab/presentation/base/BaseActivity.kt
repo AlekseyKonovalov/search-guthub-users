@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 
-internal abstract class BaseActivity(
+abstract class BaseActivity(
     @LayoutRes private val layoutResource: Int
 ) : AppCompatActivity() {
 

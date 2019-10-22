@@ -9,7 +9,7 @@ import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 import ru.alekseyk.testskblab.presentation.screen.detail.DetailActivity
 import ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter.RepositoriesAdapter
 
-internal class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
+class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
     layoutResource = R.layout.fragment_favorites_repo
 ) {
     private val adapter by lazy {

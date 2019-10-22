@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers
 import ru.alekseyk.testskblab.domain.usecase.UserUseCase
 import ru.alekseyk.testskblab.presentation.base.StateViewModel
 
-internal class RepoListViewModel(
+class RepoListViewModel(
     private var userUseCase: UserUseCase
 ) : StateViewModel<RepoListViewState>(
     defaultState = RepoListViewState()

@@ -8,7 +8,7 @@ import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.recycler.BaseViewHolder
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 
-internal class RepositoriesViewHolder(
+class RepositoriesViewHolder(
     itemView: View,
     private val onItemClick: (Int) -> Unit,
     private val onActionClick: ((Int, Boolean) -> Unit)

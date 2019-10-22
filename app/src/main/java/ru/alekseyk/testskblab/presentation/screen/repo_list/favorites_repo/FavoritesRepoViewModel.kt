@@ -10,7 +10,7 @@ import ru.alekseyk.testskblab.presentation.mapper.PresentationMapper
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 import timber.log.Timber
 
-internal class FavoritesRepoViewModel(
+class FavoritesRepoViewModel(
     private val repositoriesUseCase: RepositoriesUseCase
 ) : StateViewModel<FavoritesRepoViewState>(
     defaultState = FavoritesRepoViewState()

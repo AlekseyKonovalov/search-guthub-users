@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.Subject
 
-internal abstract class StateViewModel<ViewState : Any>(defaultState: ViewState) : ViewModel(), LifecycleObserver {
+abstract class StateViewModel<ViewState : Any>(defaultState: ViewState) : ViewModel(), LifecycleObserver {
 
     val state: Observable<ViewState>
         get() = _state

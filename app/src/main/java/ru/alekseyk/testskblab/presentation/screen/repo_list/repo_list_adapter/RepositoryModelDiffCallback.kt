@@ -3,7 +3,7 @@ package ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter
 import ru.alekseyk.testskblab.presentation.base.recycler.ItemDiffCallback
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 
-internal class RepositoryModelDiffCallback(
+class RepositoryModelDiffCallback(
     oldItems: List<RepositoryModel>,
     newItems: List<RepositoryModel>
 ) : ItemDiffCallback<RepositoryModel>(oldItems, newItems) {

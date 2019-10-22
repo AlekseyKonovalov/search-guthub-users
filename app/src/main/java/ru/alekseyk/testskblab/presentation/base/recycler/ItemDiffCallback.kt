@@ -2,7 +2,7 @@ package ru.alekseyk.testskblab.presentation.base.recycler
 
 import androidx.recyclerview.widget.DiffUtil
 
-internal abstract class ItemDiffCallback<T>(
+abstract class ItemDiffCallback<T>(
     private val oldItems: List<T>,
     private val newItems: List<T>
 ) : DiffUtil.Callback() {

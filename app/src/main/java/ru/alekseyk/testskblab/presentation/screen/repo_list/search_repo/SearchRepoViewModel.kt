@@ -12,7 +12,7 @@ import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-internal class SearchRepoViewModel(
+class SearchRepoViewModel(
     private val repositoriesUseCase: RepositoriesUseCase
 ) : StateViewModel<SearchRepoViewState>(
     defaultState = SearchRepoViewState()
@@ -59,11 +59,12 @@ internal class SearchRepoViewModel(
     }
 
     fun requestData() {
-        if(currentState.searchQuery.isNullOrEmpty()){
+        if (currentState.searchQuery.isNullOrEmpty()) {
             updateState(
                 currentState.copy(
                     isLoading = false,
-                    payload = listOf())
+                    payload = listOf()
+                )
             )
             return
         }

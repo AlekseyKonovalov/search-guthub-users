@@ -15,7 +15,7 @@ import ru.alekseyk.testskblab.presentation.screen.auth.AuthActivity
 import ru.alekseyk.testskblab.presentation.screen.repo_list.favorites_repo.FavoritesRepoFragment
 import ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo.SearchRepoFragment
 
-internal class RepoListActivity : StateActivity<RepoListViewState>(
+class RepoListActivity : StateActivity<RepoListViewState>(
     layoutResource = R.layout.activity_repolist
 ) {
 

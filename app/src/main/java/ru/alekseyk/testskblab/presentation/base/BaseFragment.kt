@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import ru.alekseyk.testskblab.presentation.ext.inflate
 
-internal abstract class BaseFragment(
+abstract class BaseFragment(
     @LayoutRes private val layoutResource: Int
 ) : Fragment() {
 
@@ -17,7 +18,7 @@ internal abstract class BaseFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(layoutResource, null)
+        return inflate(layoutResource)
     }
 
     @CallSuper

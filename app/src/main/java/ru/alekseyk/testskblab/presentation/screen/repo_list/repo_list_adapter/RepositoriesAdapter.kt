@@ -6,7 +6,7 @@ import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.recycler.BaseAdapter
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 
-internal class RepositoriesAdapter(
+class RepositoriesAdapter(
     private val onItemClick: (RepositoryModel) -> Unit,
     private val onActionClick: (RepositoryModel, Boolean) -> Unit
 ) : BaseAdapter<RepositoriesViewHolder>() {

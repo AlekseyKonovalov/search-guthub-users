@@ -7,7 +7,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
-internal abstract class StateActivity<ViewState : Any>(
+abstract class StateActivity<ViewState : Any>(
     @LayoutRes layoutResource: Int
 ) : BaseActivity(layoutResource) {
 

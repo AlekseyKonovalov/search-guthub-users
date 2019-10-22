@@ -7,7 +7,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
-internal abstract class StateFragment<ViewState : Any>(
+abstract class StateFragment<ViewState : Any>(
     @LayoutRes layoutResource: Int
 ) : BaseFragment(layoutResource) {
 

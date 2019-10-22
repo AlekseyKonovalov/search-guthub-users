@@ -11,7 +11,7 @@ import ru.alekseyk.testskblab.presentation.base.StateActivity
 import ru.alekseyk.testskblab.presentation.ext.setNavigationOnClickListener
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 
-internal class DetailActivity : StateActivity<DetailViewState>(
+class DetailActivity : StateActivity<DetailViewState>(
     layoutResource = R.layout.activity_detail
 ) {
 

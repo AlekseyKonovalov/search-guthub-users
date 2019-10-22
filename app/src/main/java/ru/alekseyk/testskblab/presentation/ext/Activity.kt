@@ -24,10 +24,6 @@ fun Activity.hideKeyboard() {
     }
 }
 
-fun <T> Activity.argSerializable(key: String) = lazy { intent!!.getSerializableExtra(key)!! as T }
-fun <T> Activity.argSerializableNullable(key: String) =
-    lazy { intent?.getSerializableExtra(key) as T }
-
 fun Activity.buildAlertDialog(title: String? = null,
                               message: String? = null,
                               onPositiveBtnClick: (() -> Unit)? = null): AlertDialog {

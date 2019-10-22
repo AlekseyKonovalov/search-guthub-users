@@ -8,7 +8,7 @@ import ru.alekseyk.testskblab.domain.usecase.UserUseCase
 import ru.alekseyk.testskblab.presentation.base.StateViewModel
 import timber.log.Timber
 
-internal class AuthViewModel(
+class AuthViewModel(
     private val userUseCase: UserUseCase
 ) : StateViewModel<AuthViewState>(
     defaultState = AuthViewState()

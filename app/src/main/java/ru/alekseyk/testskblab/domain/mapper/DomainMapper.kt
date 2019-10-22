@@ -1,14 +1,10 @@
 package ru.alekseyk.testskblab.domain.mapper
 
 import ru.alekseyk.testskblab.data.db.entity.RepositoryDbEntity
-import ru.alekseyk.testskblab.data.db.entity.UserDbEntity
 import ru.alekseyk.testskblab.domain.entity.RepositoryEntity
-import ru.alekseyk.testskblab.domain.entity.UserEntity
+
 
 internal object DomainMapper {
-    fun toUserDbEntity(userEntity: UserEntity): UserDbEntity {
-        return UserDbEntity(accountEmail = userEntity.accountEmail)
-    }
 
     fun toRepositoryEntity(
         description: String?,
@@ -56,7 +52,8 @@ internal object DomainMapper {
             isFavorite = repositoryEntity.isFavorite,
             stargazersCount = repositoryEntity.stargazersCount,
             forksCount = repositoryEntity.forksCount,
-            createdAt = repositoryEntity.createdAt
+            createdAt = repositoryEntity.createdAt,
+            accountEmail = ""
         )
 
     }

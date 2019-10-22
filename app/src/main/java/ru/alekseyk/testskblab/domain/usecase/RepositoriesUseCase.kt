@@ -32,10 +32,16 @@ class RepositoriesUseCase(
                 }
             }
     }
-
-    fun updateFavoriteStatus(repositoryEntity: RepositoryEntity): Completable {
-        return repository.updateFavoriteStatus(DomainMapper.toRepositoryDbEntity(repositoryEntity))
+    fun addToFavoritesRepositories(repositoryEntity: RepositoryEntity): Completable{
+        return repository.addToFavoritesRepositories(DomainMapper.toRepositoryDbEntity(repositoryEntity))
     }
+    fun deleteFromFavoritesRepositories(repositoryEntity: RepositoryEntity): Completable{
+        return repository.deleteFromFavoritesRepositories(DomainMapper.toRepositoryDbEntity(repositoryEntity))
+    }
+
+/*    fun updateFavoriteStatus(repositoryEntity: RepositoryEntity): Completable {
+        return repository.updateFavoriteStatus(DomainMapper.toRepositoryDbEntity(repositoryEntity))
+    }*/
 
     fun getFavoritesRepositories(): Single<List<RepositoryEntity>> {
         return repository.getFavoritesRepositories()

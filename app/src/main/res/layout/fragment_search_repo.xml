@@ -33,6 +33,18 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp">
 
+                    <ImageButton
+                        android:id="@+id/repolist_parcelnumber_search_btn"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_search"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="@+id/search_key_edt"
+                        app:layout_constraintStart_toStartOf="@+id/search_key_edt"
+                        app:layout_constraintTop_toTopOf="@+id/search_key_edt"
+                        tools:visibility="visible" />
+
                     <EditText
                         android:id="@+id/search_key_edt"
                         android:layout_width="0dp"
@@ -48,7 +60,7 @@
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/darker_gray"
                         android:textCursorDrawable="@drawable/drawable_text_cursor_gray"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -85,6 +97,7 @@
 
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/repo_list_parcels_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -103,52 +116,50 @@
                     android:clipToPadding="false"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
-
-        <LinearLayout
-            android:id="@+id/search_placeholder_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingStart="40dp"
-            android:paddingEnd="40dp"
-            android:visibility="visible">
-
-            <ImageView
-                android:layout_width="86dp"
-                android:layout_height="86dp"
-                android:background="@null"
-                android:scaleType="fitXY"
-                tools:ignore="ContentDescription"
-                tools:src="@drawable/ic_search_big" />
-
-            <TextView
-                android:id="@+id/search_placeholder_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                tools:text="Воспользуйтесь поиском,чтобы найти интересующие Вас репозитории" />
-
-        </LinearLayout>
-
     </FrameLayout>
 
 
+    <FrameLayout
+        android:id="@+id/search_placeholder_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:visibility="visible"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <ImageView
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/ic_search_big" />
+
+        <TextView
+            android:id="@+id/search_placeholder_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="22dp"
+            android:gravity="center"
+            android:text="Воспользуйтесь поиском,чтобы найти интересующие Вас репозитории"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
 
     <ProgressBar
         android:id="@+id/general_progressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone" />
+        android:layout_marginBottom="120dp"
+        android:visibility="visible" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

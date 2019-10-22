@@ -2,11 +2,11 @@ package ru.alekseyk.testskblab.data.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.PrimaryKey
+import io.reactivex.annotations.NonNull
 
-@Entity
+@Entity(primaryKeys = ["id", "accountEmail"])
 data class RepositoryDbEntity(
-    @PrimaryKey
+    @NonNull
     @ColumnInfo
     val id: Int,
     @ColumnInfo
@@ -32,5 +32,6 @@ data class RepositoryDbEntity(
     @ColumnInfo
     val createdAt: String,
     @ColumnInfo
-    val accountEmail: String? = null
+    @NonNull
+    val accountEmail: String
 )

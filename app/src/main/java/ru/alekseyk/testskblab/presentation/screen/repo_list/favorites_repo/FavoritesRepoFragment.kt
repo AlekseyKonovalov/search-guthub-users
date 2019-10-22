@@ -35,6 +35,7 @@ internal class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
 
     override fun render(state: FavoritesRepoViewState) {
         general_progressbar.isVisible = state.isLoading
+        search_placeholder_layout.isVisible = state.payload.isEmpty() && !state.isLoading
         adapter.items = state.payload
     }
 
@@ -42,7 +43,7 @@ internal class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
         activity?.let { DetailActivity.startActivity(it, repositoryModel) }
     }
 
-    fun updateFavoritesList(){
+    fun updateFavoritesList() {
         viewModel.getFavoritesRepositories()
     }
 }

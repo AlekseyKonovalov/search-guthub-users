@@ -6,7 +6,6 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import ru.alekseyk.testskblab.domain.usecase.UserUseCase
 import ru.alekseyk.testskblab.presentation.base.StateViewModel
-import ru.alekseyk.testskblab.presentation.mapper.PresentationMapper
 import timber.log.Timber
 
 internal class AuthViewModel(
@@ -16,7 +15,7 @@ internal class AuthViewModel(
 ) {
 
     fun setUserData(accountName: String) {
-        userUseCase.setUserData(PresentationMapper.toUserEntity(accountName, true))
+        userUseCase.setUserData(accountName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { updateState(currentState.copy(isLoading = true)) }
@@ -39,7 +38,7 @@ internal class AuthViewModel(
             .doOnSubscribe { updateState(currentState.copy(isLoading = true)) }
             .subscribeBy(
                 onSuccess = {
-                    if (it.isEmpty()) {
+                    if (it.isNullOrEmpty()) {
                         updateState(currentState.copy(isLoading = false, isFinish = false))
                     } else {
                         updateState(currentState.copy(isLoading = false, isFinish = true))

@@ -32,7 +32,7 @@ interface RepositoryDao {
     @Query("DELETE FROM $TABLE_NAME")
     fun deleteAll(): Completable
 
-    @Query("SELECT * FROM $TABLE_NAME WHERE isFavorite LIKE '%' || :status || '%'")
-    fun getFavoriteRepositories(status: Boolean = true): Single<List<RepositoryDbEntity>>
+    @Query("SELECT * FROM $TABLE_NAME WHERE accountEmail LIKE '%' || :accountEmail || '%'")
+    fun getFavoriteRepositories(accountEmail: String): Single<List<RepositoryDbEntity>>
 
 }

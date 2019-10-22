@@ -6,7 +6,6 @@ import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 import ru.alekseyk.testskblab.data.datasource.IDataSource
 import ru.alekseyk.testskblab.data.db.entity.RepositoryDbEntity
-import ru.alekseyk.testskblab.data.db.entity.UserDbEntity
 import ru.alekseyk.testskblab.data.dto.SearchRepositoriesListDto
 import ru.alekseyk.testskblab.data.mapper.DataMapper
 import ru.alekseyk.testskblab.domain.repository.IRepository
@@ -15,6 +14,13 @@ internal class Repository(
     private val localDataSource: IDataSource,
     private val remoteDataSource: IDataSource
 ) : IRepository {
+    override fun addToFavoritesRepositories(repositoryEntity: RepositoryDbEntity): Completable {
+        return  localDataSource.addToFavoritesRepositories(repositoryEntity)
+    }
+
+    override fun deleteFromFavoritesRepositories(repositoryEntity: RepositoryDbEntity): Completable {
+        return  localDataSource.deleteFromFavoritesRepositories(repositoryEntity)
+    }
 
     override fun deleteUserData(): Completable {
         return localDataSource.deleteUserData()
@@ -24,12 +30,7 @@ internal class Repository(
         return localDataSource.getFavoritesRepositories()
     }
 
-    override fun updateFavoriteStatus(repositoryEntity: RepositoryDbEntity): Completable {
-        return  localDataSource.updateFavoriteStatus(repositoryEntity)
-    }
-
     override fun getRepositoriesBySearch(query: String): Observable<List<RepositoryDbEntity>> {
-
         return Observable.zip( remoteDataSource.getRepositoriesBySearch(query),
             localDataSource.getFavoritesRepositories().toObservable(),
             BiFunction { remoteRepositories: SearchRepositoriesListDto,
@@ -56,16 +57,14 @@ internal class Repository(
                 }
                 )
             }
-
-      /*  return remoteDataSource.getRepositoriesBySearch(query)*/
     }
 
-    override fun getCurrentUserData(): Single<List<UserDbEntity>> {
+    override fun getCurrentUserData(): Single<String> {
         return localDataSource.getCurrentUserData()
     }
 
-    override fun setUserData(userDbEntity: UserDbEntity): Completable {
-        return localDataSource.setUserData(userDbEntity)
+    override fun setUserData(accountEmail: String): Completable {
+        return localDataSource.setUserData(accountEmail)
     }
 
 }

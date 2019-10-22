@@ -19,37 +19,43 @@ internal class SearchRepoViewModel(
 ) {
 
     fun updateFavoriteStatus(repositoryModel: RepositoryModel, status: Boolean) {
-        repositoriesUseCase.updateFavoriteStatus(
-            PresentationMapper.toRepositoryEntity(
-                repositoryModel.copy(isFavorite = status)
-            )
-        ).observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribeBy(
-                onComplete = { },
-                onError = { Timber.e(it) }
-            )
-            .addTo(disposables)
+        if (status) {
+            repositoriesUseCase.addToFavoritesRepositories(
+                PresentationMapper.toRepositoryEntity(
+                    repositoryModel.copy(isFavorite = status)
+                )
+            ).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribeBy(
+                    onComplete = { },
+                    onError = { Timber.e(it) }
+                )
+                .addTo(disposables)
+        } else {
+            repositoriesUseCase.deleteFromFavoritesRepositories(
+                PresentationMapper.toRepositoryEntity(
+                    repositoryModel.copy(isFavorite = status)
+                )
+            ).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribeBy(
+                    onComplete = { },
+                    onError = { Timber.e(it) }
+                )
+                .addTo(disposables)
+        }
     }
 
     fun updateSearchQuery(query: String) {
         Observable.just(query)
             .map { text -> text.toLowerCase().trim() }
-            .debounce(500, TimeUnit.MILLISECONDS)
+            .debounce(1000, TimeUnit.MILLISECONDS)
             .distinct()
             .subscribeBy(onNext = {
                 updateState(currentState.copy(searchQuery = query))
                 requestData()
             })
             .addTo(disposables)
-
-
-/*        updateState(currentState.copy(searchQuery = query))
-*//*        if (query.isBlank()) {
-            updateState(currentState.copy(payload = emptyList(), isLoading = false))
-            return
-        }*//*
-        requestData()*/
     }
 
     fun requestData() {

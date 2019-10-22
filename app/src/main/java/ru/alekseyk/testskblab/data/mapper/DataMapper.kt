@@ -30,7 +30,8 @@ internal object DataMapper {
             isFavorite = isFavorite,
             stargazersCount = stargazersCount,
             forksCount = forksCount,
-            createdAt = createdAt
+            createdAt = createdAt,
+            accountEmail = ""
         )
 
     }

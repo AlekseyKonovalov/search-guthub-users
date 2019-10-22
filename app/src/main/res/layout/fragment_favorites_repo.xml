@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:titleEnabled="false"
-            tools:background="@color/colorPrimary"/>
+            tools:background="@color/colorPrimary" />
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -57,12 +57,44 @@
 
         </androidx.core.widget.NestedScrollView>
 
+        <FrameLayout
+            android:id="@+id/search_placeholder_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:visibility="visible"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ImageView
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/ic_search_big" />
+
+            <TextView
+                android:id="@+id/search_placeholder_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="22dp"
+                android:gravity="center"
+                android:text="Добавьте в сохраненное, интерсующие Вас репозитории"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+        </FrameLayout>
+
         <ProgressBar
             android:id="@+id/general_progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone" />
+            android:layout_marginBottom="120dp"
+            android:visibility="visible" />
 
     </FrameLayout>
 

@@ -21,6 +21,12 @@ internal class RepoListActivity : StateActivity<RepoListViewState>(
 
     override val viewModel by viewModel<RepoListViewModel>()
 
+    private val toolbarTitle: String by lazy {
+        intent!!.getStringExtra(
+            EXTRA_USERNAME
+        )
+    }
+
     override fun render(state: RepoListViewState) {
         general_progressbar.isVisible = state.isLoading
         if (state.isFinish) {
@@ -30,7 +36,7 @@ internal class RepoListActivity : StateActivity<RepoListViewState>(
     }
 
     override fun initViews() {
-        general_toolbar.title = "Github repositories"
+        general_toolbar.title = toolbarTitle
         setSupportActionBar(general_toolbar)
 
         view_pager.adapter = RepoListPagerAdapter(supportFragmentManager, this@RepoListActivity)
@@ -74,6 +80,16 @@ internal class RepoListActivity : StateActivity<RepoListViewState>(
     companion object {
         fun startActivity(context: Context) {
             context.startActivity(Intent(context, RepoListActivity::class.java))
+        }
+
+        private const val EXTRA_USERNAME = "extra_username"
+        fun startActivity(context: Context, accountEmail: String) {
+            context.startActivity(Intent(context, RepoListActivity::class.java).apply {
+                putExtra(
+                    EXTRA_USERNAME,
+                    accountEmail
+                )
+            })
         }
     }
 

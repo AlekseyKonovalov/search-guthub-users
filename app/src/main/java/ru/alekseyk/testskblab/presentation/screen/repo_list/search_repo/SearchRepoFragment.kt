@@ -45,8 +45,7 @@ internal class SearchRepoFragment : StateFragment<SearchRepoViewState>(
         search_placeholder_layout.isVisible = isItemsListEmpty && !isSearchMode
 
         repolist_parcelnumber_clear_btn.isVisible = isSearchMode
-        general_progressbar.isVisible = state.isLoading
-
+        general_progressbar.isVisible = state.isLoading && isSearchMode
 
         search_key_edt.diffedValue = state.searchQuery
 

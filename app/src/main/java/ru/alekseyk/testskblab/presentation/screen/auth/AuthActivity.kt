@@ -28,7 +28,8 @@ internal class AuthActivity : StateActivity<AuthViewState>(
         general_progressbar.isVisible = state.isLoading
 
         if (state.isFinish) {
-            RepoListActivity.startActivity(this@AuthActivity)
+            RepoListActivity.startActivity(this@AuthActivity,
+                state.accountName.split("@").first())
             finish()
         }
     }

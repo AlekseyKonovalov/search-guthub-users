@@ -21,7 +21,7 @@ internal class AuthViewModel(
             .doOnSubscribe { updateState(currentState.copy(isLoading = true)) }
             .subscribeBy(
                 onComplete = {
-                    updateState(currentState.copy(isLoading = false, isFinish = true))
+                    updateState(currentState.copy(isLoading = false, isFinish = true, accountName = accountName))
                 },
                 onError = { error ->
                     Timber.e(error)
@@ -41,7 +41,7 @@ internal class AuthViewModel(
                     if (it.isNullOrEmpty()) {
                         updateState(currentState.copy(isLoading = false, isFinish = false))
                     } else {
-                        updateState(currentState.copy(isLoading = false, isFinish = true))
+                        updateState(currentState.copy(isLoading = false, isFinish = true, accountName = it))
                     }
                 },
                 onError = { error ->

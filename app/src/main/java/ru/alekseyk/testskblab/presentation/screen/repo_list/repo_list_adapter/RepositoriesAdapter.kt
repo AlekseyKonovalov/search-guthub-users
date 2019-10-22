@@ -4,7 +4,6 @@ import android.view.View
 import androidx.recyclerview.widget.DiffUtil
 import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.recycler.BaseAdapter
-import ru.alekseyk.testskblab.presentation.base.recycler.KeyDiffCallback
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 
 internal class RepositoriesAdapter(
@@ -12,9 +11,9 @@ internal class RepositoriesAdapter(
     private val onActionClick: (RepositoryModel, Boolean) -> Unit
 ) : BaseAdapter<RepositoriesViewHolder>() {
 
-    var items: List<RepositoryModel> = listOf()
+    var items: List<RepositoryModel> = emptyList()
         set(value) {
-            val callback = KeyDiffCallback(field, value) { it.name }
+            val callback = RepositoryModelDiffCallback(field, value)
             val result = DiffUtil.calculateDiff(callback)
             field = value
             result.dispatchUpdatesTo(this)
@@ -40,6 +39,8 @@ internal class RepositoriesAdapter(
     private fun onActionClick(position: Int, status: Boolean) {
         onActionClick.invoke(items[position], status)
     }
+
+
 
 
 }

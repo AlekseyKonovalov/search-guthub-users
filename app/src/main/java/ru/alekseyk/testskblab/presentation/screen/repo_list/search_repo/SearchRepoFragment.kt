@@ -34,7 +34,6 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
             viewModel.updateSearchQuery(it)
         }
         repolist_search_clear_btn.setOnClickListener { search_key_edt.text.clear() }
-        repolist_search_btn.setOnClickListener { updateSearch() }
 
     }
 

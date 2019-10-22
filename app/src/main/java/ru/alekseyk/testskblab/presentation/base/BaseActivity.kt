@@ -12,9 +12,14 @@ abstract class BaseActivity(
         super.onCreate(savedInstanceState)
         setContentView(layoutResource)
         initViews()
+    }
+
+    override fun onStart() {
+        super.onStart()
         initListeners()
         initViewModelObserving()
     }
+
 
     protected abstract fun initListeners()
     protected abstract fun initViews()

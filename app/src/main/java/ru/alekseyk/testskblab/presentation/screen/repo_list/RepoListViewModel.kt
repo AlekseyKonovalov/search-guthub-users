@@ -6,6 +6,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import ru.alekseyk.testskblab.domain.usecase.UserUseCase
 import ru.alekseyk.testskblab.presentation.base.StateViewModel
+import timber.log.Timber
 
 class RepoListViewModel(
     private var userUseCase: UserUseCase
@@ -20,8 +21,13 @@ class RepoListViewModel(
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { updateState(currentState.copy(isLoading = true)) }
             .subscribeBy(
-                onComplete = { updateState(currentState.copy(isLoading = false, isFinish = true)) },
-                onError = { updateState(currentState.copy(isLoading = false)) }
+                onComplete = {
+                    updateState(currentState.copy(isLoading = false, isFinish = true))
+                },
+                onError = {
+                    Timber.e(it)
+                    updateState(currentState.copy(isLoading = false))
+                }
             )
             .addTo(disposables)
     }

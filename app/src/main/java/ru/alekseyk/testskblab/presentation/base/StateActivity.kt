@@ -16,14 +16,11 @@ abstract class StateActivity<ViewState : Any>(
     protected val currentState: ViewState
         get() = viewModel.currentState
 
-    protected val viewDisposable = CompositeDisposable()
-
     private val disposable = CompositeDisposable()
 
     override fun onStop() {
         super.onStop()
         disposable.clear()
-        viewDisposable.clear()
     }
 
     override fun initViewModelObserving() {

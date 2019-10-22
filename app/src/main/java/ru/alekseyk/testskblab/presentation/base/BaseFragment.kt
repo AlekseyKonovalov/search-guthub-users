@@ -25,11 +25,12 @@ abstract class BaseFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        initListeners()
     }
 
+    @CallSuper
     override fun onStart() {
         super.onStart()
+        initListeners()
         initViewModelObserving()
     }
 

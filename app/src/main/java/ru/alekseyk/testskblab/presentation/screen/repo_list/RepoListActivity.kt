@@ -78,10 +78,6 @@ class RepoListActivity : StateActivity<RepoListViewState>(
     }
 
     companion object {
-        fun startActivity(context: Context) {
-            context.startActivity(Intent(context, RepoListActivity::class.java))
-        }
-
         private const val EXTRA_USERNAME = "extra_username"
         fun startActivity(context: Context, accountEmail: String) {
             context.startActivity(Intent(context, RepoListActivity::class.java).apply {

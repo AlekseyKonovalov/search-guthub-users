@@ -49,7 +49,6 @@ class SearchRepoViewModel(
     fun updateSearchQuery(query: String) {
         Observable.just(query)
             .map { text -> text.toLowerCase().trim() }
-            .debounce(1000, TimeUnit.MILLISECONDS)
             .distinct()
             .subscribeBy(onNext = {
                 updateState(currentState.copy(searchQuery = query))
@@ -70,9 +69,11 @@ class SearchRepoViewModel(
         }
 
         repositoriesUseCase.getRepositoriesBySearch(currentState.searchQuery)
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { updateState(currentState.copy(isLoading = true)) }
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .distinctUntilChanged()
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
                     updateState(

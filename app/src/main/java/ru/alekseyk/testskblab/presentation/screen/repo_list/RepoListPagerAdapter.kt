@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.screen.repo_list.favorites_repo.FavoritesRepoFragment
 import ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo.SearchRepoFragment
 
@@ -13,8 +14,8 @@ class RepoListPagerAdapter(fragmentManager: FragmentManager, val context: Contex
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "Поиск"
-            else -> "Сохраненное"
+            0 -> context.getString(R.string.repo_list_toolbar_title_search)
+            else -> context.getString(R.string.repo_list_toolbar_title_favorite)
         }
     }
 

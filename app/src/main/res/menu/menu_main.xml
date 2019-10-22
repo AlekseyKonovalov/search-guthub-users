@@ -5,10 +5,10 @@
         android:id="@+id/action_update"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_autorenew"
-        android:title="Обновить"/>
+        android:title="@string/menu_item_update"/>
     <item
         android:id="@+id/action_logout"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_exit"
-        android:title="Выйти"/>
+        android:title="@string/menu_item_logout"/>
 </menu>

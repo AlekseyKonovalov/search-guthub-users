@@ -5,4 +5,30 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
 
+    <string name="menu_item_update">Обновить</string>
+    <string name="menu_item_logout">Выйти</string>
+
+    <!--    Auth activity   -->
+    <string name="auth_sign_in_with_goggle">Авторизуйтесь через Google</string>
+
+    <!--    Repo List activity  -->
+    <string name="repo_list_logout_title_dialog">Выйти из аккаунта</string>
+    <string name="repo_list_toolbar_title_search">Поиск</string>
+    <string name="repo_list_toolbar_title_favorite">Сохраненное</string>
+
+    <!--favorites fragment -->
+    <string name="favorites_placeholder_text">Добавьте интересующие Вас репозитории в сохраненное</string>
+
+    <!--favorites search -->
+    <string name="search_placeholder_text">Воспользуйтесь поиском,чтобы найти интересующие Вас репозитории</string>
+    <string name="search_search_hint_text">искать здесь . . .</string>
+
+
+    <!--    Detail activity     -->
+    <string name="detail_author">Автор</string>
+    <string name="detail_description">Описание</string>
+    <string name="detail_fork_count">Количество fork</string>
+    <string name="detail_star_count">Количество star</string>
+    <string name="detail_creation_date">Дата создания</string>
+
 </resources>

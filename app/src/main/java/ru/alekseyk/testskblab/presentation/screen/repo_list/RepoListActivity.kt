@@ -68,7 +68,7 @@ class RepoListActivity : StateActivity<RepoListViewState>(
             }
             R.id.action_logout -> {
                 this.buildAlertDialog(
-                    title = "Выйти из аккаунта",
+                    title = getString(R.string.repo_list_logout_title_dialog),
                     onPositiveBtnClick = { viewModel.deleteUserData() }).show()
                 true
             }

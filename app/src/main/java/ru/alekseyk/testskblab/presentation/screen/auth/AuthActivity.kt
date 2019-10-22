@@ -28,8 +28,10 @@ class AuthActivity : StateActivity<AuthViewState>(
         general_progressbar.isVisible = state.isLoading
 
         if (state.isFinish) {
-            RepoListActivity.startActivity(this@AuthActivity,
-                state.accountName.split("@").first())
+            RepoListActivity.startActivity(
+                this@AuthActivity,
+                state.accountName.split("@").first()
+            )
             finish()
         }
     }
@@ -42,13 +44,13 @@ class AuthActivity : StateActivity<AuthViewState>(
                 null, null, arrayOf("com.google"),
                 false, null, null, null, null
             )
-            startActivityForResult(intent, 123)
+            startActivityForResult(intent, ACCOUNT_PICKER_REQUEST_CODE)
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 123) {
+        if (requestCode == ACCOUNT_PICKER_REQUEST_CODE) {
             data?.let {
                 it.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)?.let {
                     viewModel.setUserData(it)
@@ -58,6 +60,8 @@ class AuthActivity : StateActivity<AuthViewState>(
     }
 
     companion object {
+        private const val ACCOUNT_PICKER_REQUEST_CODE = 123
+
         fun startActivity(context: Context) {
             context.startActivity(Intent(context, AuthActivity::class.java))
         }

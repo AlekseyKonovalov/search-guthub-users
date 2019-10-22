@@ -21,26 +21,20 @@ class FavoritesRepoViewModel(
                 PresentationMapper.toRepositoryEntity(
                     repositoryModel.copy(isFavorite = status)
                 )
-            ).observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribeBy(
-                    onComplete = { },
-                    onError = { Timber.e(it) }
-                )
-                .addTo(disposables)
+            )
         } else {
             repositoriesUseCase.deleteFromFavoritesRepositories(
                 PresentationMapper.toRepositoryEntity(
                     repositoryModel.copy(isFavorite = status)
                 )
-            ).observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribeBy(
-                    onComplete = { },
-                    onError = { Timber.e(it) }
-                )
-                .addTo(disposables)
-        }
+            )
+        }.observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribeBy(
+                onComplete = { },
+                onError = { Timber.e(it) }
+            )
+            .addTo(disposables)
     }
 
     fun getFavoritesRepositories() {

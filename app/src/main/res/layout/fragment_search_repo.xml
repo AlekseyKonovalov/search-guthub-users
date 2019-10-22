@@ -50,7 +50,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_search"
-                        android:hint="search here . . ."
+                        android:hint="@string/search_search_hint_text"
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:paddingStart="50dp"
@@ -146,7 +146,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="22dp"
             android:gravity="center"
-            android:text="Воспользуйтесь поиском,чтобы найти интересующие Вас репозитории"
+            android:text="@string/search_placeholder_text"
             android:textSize="16sp"
             android:textStyle="bold" />
 

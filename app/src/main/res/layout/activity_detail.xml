@@ -170,6 +170,27 @@
 
         </androidx.core.widget.NestedScrollView>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@android:color/transparent"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_favorites_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                tools:backgroundTint="@color/colorPrimary"
+                tools:text="Добавить в избранное" />
+
+        </LinearLayout>
+
         <ProgressBar
             android:id="@+id/general_progressbar"
             android:layout_width="wrap_content"

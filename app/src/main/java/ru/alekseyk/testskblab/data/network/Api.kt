@@ -10,6 +10,11 @@ interface Api {
 
     // repositories
     @GET("/search/repositories")
-    fun searchRepositoriesByQuery(@Query("q") query: String): Observable<SearchRepositoriesListDto>
+    fun searchRepositoriesByQuery(@Query("q") query: String,
+                                  @Query("page") page: Int,
+                                  @Query("per_page") count: Int
+
+                                 ): Observable<SearchRepositoriesListDto>
+
 
 }

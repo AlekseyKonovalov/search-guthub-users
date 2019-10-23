@@ -11,8 +11,12 @@ class RepositoriesUseCase(
     private val repository: IRepository
 ) {
 
-    fun getRepositoriesBySearch(searchKey: String): Observable<List<RepositoryEntity>> {
-        return repository.getRepositoriesBySearch(searchKey)
+    fun getRepositoriesBySearch(
+        query: String,
+        pageSize: Int,
+        position: Int
+    ): Observable<List<RepositoryEntity>> {
+        return repository.getRepositoriesBySearch(query, pageSize, position)
             .map {
                 it.map {
                     DomainMapper.toRepositoryEntity(
@@ -33,12 +37,20 @@ class RepositoriesUseCase(
             }
     }
 
-    fun addToFavoritesRepositories(repositoryEntity: RepositoryEntity): Completable{
-        return repository.addToFavoritesRepositories(DomainMapper.toRepositoryDbEntity(repositoryEntity))
+    fun addToFavoritesRepositories(repositoryEntity: RepositoryEntity): Completable {
+        return repository.addToFavoritesRepositories(
+            DomainMapper.toRepositoryDbEntity(
+                repositoryEntity
+            )
+        )
     }
 
-    fun deleteFromFavoritesRepositories(repositoryEntity: RepositoryEntity): Completable{
-        return repository.deleteFromFavoritesRepositories(DomainMapper.toRepositoryDbEntity(repositoryEntity))
+    fun deleteFromFavoritesRepositories(repositoryEntity: RepositoryEntity): Completable {
+        return repository.deleteFromFavoritesRepositories(
+            DomainMapper.toRepositoryDbEntity(
+                repositoryEntity
+            )
+        )
     }
 
     fun getFavoritesRepositories(): Single<List<RepositoryEntity>> {
@@ -61,6 +73,30 @@ class RepositoriesUseCase(
 
                     )
                 }
+            }
+    }
+
+
+    fun getFavoriteRepositoryById(repositoryId: Int): Single<RepositoryEntity> {
+        return repository.getFavoriteRepositoryById(repositoryId)
+            .map {
+
+                    DomainMapper.toRepositoryEntity(
+                        description = it.description,
+                        fullName = it.fullName,
+                        id = it.id,
+                        name = it.name,
+                        ownerId = it.ownerId,
+                        ownerLogin = it.ownerLogin,
+                        ownerAvatarUrl = it.ownerAvatarUrl,
+                        ownerUrl = it.ownerUrl,
+                        isFavorite = it.isFavorite,
+                        stargazersCount = it.stargazersCount,
+                        forksCount = it.forksCount,
+                        createdAt = it.createdAt
+
+                    )
+
             }
     }
 

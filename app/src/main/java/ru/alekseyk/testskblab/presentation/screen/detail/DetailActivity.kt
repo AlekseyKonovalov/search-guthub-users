@@ -2,6 +2,7 @@ package ru.alekseyk.testskblab.presentation.screen.detail
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -22,12 +23,22 @@ class DetailActivity : StateActivity<DetailViewState>(
         ) as RepositoryModel
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.setStatus(repositoryModel)
+    }
+
     override fun initListeners() {
         general_toolbar?.setNavigationOnClickListener(::finish)
+        add_favorites_btn.setOnClickListener {
+            viewModel.updateFavoriteStatus(repositoryModel)
+        }
     }
 
     override fun render(state: DetailViewState) {
         general_progressbar.isVisible = state.isLoading
+        add_favorites_btn.text =
+            if (state.isFavorite) "Удалить из избранного" else "Добавить в избранное"
     }
 
     override fun initViews() {
@@ -38,6 +49,7 @@ class DetailActivity : StateActivity<DetailViewState>(
         detail_fork_count_tv.text = repositoryModel.forksCount.toString()
         detail_star_count_tv.text = repositoryModel.stargazersCount.toString()
         detail_created_at_tv.text = repositoryModel.createdAt
+
     }
 
     companion object {

@@ -35,4 +35,7 @@ interface RepositoryDao {
     @Query("SELECT * FROM $TABLE_NAME WHERE accountEmail LIKE '%' || :accountEmail || '%'")
     fun getFavoriteRepositories(accountEmail: String): Single<List<RepositoryDbEntity>>
 
+    @Query("SELECT * FROM $TABLE_NAME WHERE accountEmail LIKE '%' || :accountEmail || '%' AND id LIKE '%' || :id || '%'")
+    fun getFavoriteRepository(accountEmail: String, id: Int): Single<RepositoryDbEntity?>
+
 }

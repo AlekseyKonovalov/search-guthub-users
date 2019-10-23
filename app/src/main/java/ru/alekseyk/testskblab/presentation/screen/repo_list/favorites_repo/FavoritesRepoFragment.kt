@@ -7,15 +7,14 @@ import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.StateFragment
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 import ru.alekseyk.testskblab.presentation.screen.detail.DetailActivity
-import ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter.RepositoriesAdapter
+import ru.alekseyk.testskblab.presentation.screen.repo_list.favorites_repo.repo_list_adapter.RepositoriesAdapter
 
 class FavoritesRepoFragment : StateFragment<FavoritesRepoViewState>(
     layoutResource = R.layout.fragment_favorites_repo
 ) {
     private val adapter by lazy {
         RepositoriesAdapter(
-            onItemClick = ::onRepositoryClick,
-            onActionClick = viewModel::updateFavoriteStatus
+            onItemClick = ::onRepositoryClick
         )
     }
 

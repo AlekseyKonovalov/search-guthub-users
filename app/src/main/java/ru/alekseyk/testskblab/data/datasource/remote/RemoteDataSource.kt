@@ -10,6 +10,10 @@ import ru.alekseyk.testskblab.data.network.Api
 
 
 class RemoteDataSource(private val api: Api) : IDataSource {
+    override  fun getFavoriteRepositoryById(repositoryId: Int): Single<RepositoryDbEntity?>  {
+        return Single.error(Exception("Method only for LocalDataSource realization"))
+    }
+
     override fun deleteFromFavoritesRepositories(repositoryEntity: RepositoryDbEntity): Completable {
         return Completable.error(Exception("Method only for LocalDataSource realization"))
     }
@@ -26,8 +30,8 @@ class RemoteDataSource(private val api: Api) : IDataSource {
         return Single.error(Exception("Method only for LocalDataSource realization"))
     }
 
-    override fun getRepositoriesBySearch(query: String): Observable<SearchRepositoriesListDto> {
-        return api.searchRepositoriesByQuery(query)
+    override fun getRepositoriesBySearch(query: String, pageSize: Int, position: Int): Observable<SearchRepositoriesListDto> {
+        return api.searchRepositoriesByQuery(query,pageSize,position)
     }
 
     override fun getCurrentUserData(): Single<String> {

@@ -30,8 +30,8 @@ internal class Repository(
         return localDataSource.getFavoritesRepositories()
     }
 
-    override fun getRepositoriesBySearch(query: String): Observable<List<RepositoryDbEntity>> {
-        return Observable.zip( remoteDataSource.getRepositoriesBySearch(query),
+    override fun getRepositoriesBySearch(query: String, pageSize: Int, position: Int): Observable<List<RepositoryDbEntity>> {
+        return Observable.zip( remoteDataSource.getRepositoriesBySearch(query,pageSize,position),
             localDataSource.getFavoritesRepositories().toObservable(),
             BiFunction { remoteRepositories: SearchRepositoriesListDto,
                          favoriteRepositories:List<RepositoryDbEntity> ->
@@ -65,6 +65,10 @@ internal class Repository(
 
     override fun setUserData(accountEmail: String): Completable {
         return localDataSource.setUserData(accountEmail)
+    }
+
+    override fun getFavoriteRepositoryById(repositoryId: Int): Single<RepositoryDbEntity?>{
+        return localDataSource.getFavoriteRepositoryById(repositoryId)
     }
 
 }

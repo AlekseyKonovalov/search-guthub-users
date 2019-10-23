@@ -34,11 +34,12 @@
                     android:padding="10dp">
 
                     <ImageButton
+                        android:id="@+id/repolist_search_btn"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:layout_marginStart="10dp"
                         android:background="?selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_search"
-                        android:layout_marginStart="10dp"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/search_key_edt"
                         app:layout_constraintStart_toStartOf="@+id/search_key_edt"
@@ -73,7 +74,7 @@
                         android:background="?selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_close"
                         android:tint="@android:color/darker_gray"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/search_key_edt"
                         app:layout_constraintEnd_toEndOf="@+id/search_key_edt"
                         app:layout_constraintTop_toTopOf="@+id/search_key_edt"
@@ -95,29 +96,24 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/repo_list_parcels_layout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/repo_list_parcels_rv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/repo_list_parcels_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:clipToPadding="false"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
 
     </FrameLayout>
 
@@ -151,14 +147,6 @@
             android:textStyle="bold" />
 
     </FrameLayout>
-
-    <ProgressBar
-        android:id="@+id/general_progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="120dp"
-        android:visibility="visible" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

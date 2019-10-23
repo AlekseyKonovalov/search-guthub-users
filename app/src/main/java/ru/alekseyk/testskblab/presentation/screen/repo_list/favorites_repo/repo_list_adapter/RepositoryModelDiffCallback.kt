@@ -1,4 +1,4 @@
-package ru.alekseyk.testskblab.presentation.screen.repo_list.repo_list_adapter
+package ru.alekseyk.testskblab.presentation.screen.repo_list.favorites_repo.repo_list_adapter
 
 import ru.alekseyk.testskblab.presentation.base.recycler.ItemDiffCallback
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel

@@ -9,11 +9,15 @@ import ru.alekseyk.testskblab.data.db.AppDatabase
 import ru.alekseyk.testskblab.data.db.entity.RepositoryDbEntity
 import ru.alekseyk.testskblab.data.dto.SearchRepositoriesListDto
 import ru.alekseyk.testskblab.data.prefs.AppPrefs
+import ru.alekseyk.testskblab.domain.entity.RepositoryEntity
 
 class LocalDataSource(
     private val appDatabase: AppDatabase,
     private val appPrefs: AppPrefs
 ) : IDataSource {
+    override fun getFavoriteRepositoryById(repositoryId: Int): Single<RepositoryDbEntity?> {
+        return appDatabase.repositoryDao().getFavoriteRepository(appPrefs.getCurrentUser() ?: "", repositoryId)
+    }
 
     override fun addToFavoritesRepositories(repositoryEntity: RepositoryDbEntity): Completable {
         return appDatabase.repositoryDao()
@@ -33,7 +37,7 @@ class LocalDataSource(
         return appDatabase.repositoryDao().getFavoriteRepositories(appPrefs.getCurrentUser() ?: "")
     }
 
-    override fun getRepositoriesBySearch(query: String): Observable<SearchRepositoriesListDto> {
+    override fun getRepositoriesBySearch(query: String, pageSize: Int, position: Int): Observable<SearchRepositoriesListDto> {
         return Observable.error(Exception("Method only for RemoteDataSource realization"))
     }
 

@@ -8,6 +8,11 @@
     <string name="menu_item_update">Обновить</string>
     <string name="menu_item_logout">Выйти</string>
 
+    <string name="footer_download"><![CDATA[Загрузка...]]></string>
+    <string name="footer_repo_error">Ошибка при загрузке репозиториев</string>
+    <string name="footer_error">Ошибка при загрузке</string>
+    <string name="footer_retry">Повторить</string>
+
     <!--    Auth activity   -->
     <string name="auth_sign_in_with_goggle">Авторизуйтесь через Google</string>
 

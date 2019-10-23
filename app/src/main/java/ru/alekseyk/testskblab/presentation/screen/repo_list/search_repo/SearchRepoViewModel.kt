@@ -11,7 +11,6 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import ru.alekseyk.testskblab.domain.usecase.RepositoriesUseCase
 import ru.alekseyk.testskblab.presentation.base.StateViewModel
-import ru.alekseyk.testskblab.presentation.mapper.PresentationMapper
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 import ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo.repo_list_adapter.RepoDataSourceFactory
 import timber.log.Timber
@@ -52,29 +51,6 @@ class SearchRepoViewModel(
 
     }
 
-
-    fun updateFavoriteStatus(repositoryModel: RepositoryModel, status: Boolean) {
-        if (status) {
-            repositoriesUseCase.addToFavoritesRepositories(
-                PresentationMapper.toRepositoryEntity(
-                    repositoryModel.copy(isFavorite = status)
-                )
-            )
-        } else {
-            repositoriesUseCase.deleteFromFavoritesRepositories(
-                PresentationMapper.toRepositoryEntity(
-                    repositoryModel.copy(isFavorite = status)
-                )
-            )
-        }.observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribeBy(
-                onComplete = { },
-                onError = { Timber.e(it) }
-            )
-            .addTo(disposables)
-    }
-
     fun updateSearchQuery(query: String) {
 
         Observable.just(query)
@@ -91,7 +67,8 @@ class SearchRepoViewModel(
         if (currentState.searchQuery.isNullOrEmpty()) {
             updateState(
                 currentState.copy(
-                    isLoading = false
+                    isLoading = false,
+                    searchItems = null
                 )
             )
             return
@@ -101,7 +78,13 @@ class SearchRepoViewModel(
 
         searchItems
             .subscribeOn(Schedulers.io())
-            .doOnSubscribe { updateState(currentState.copy(isLoading = true)) }
+            .doOnSubscribe {
+                updateState(
+                    currentState.copy(
+                        isLoading = true
+                    )
+                )
+            }
             .debounce(500, TimeUnit.MILLISECONDS)
             .distinctUntilChanged()
             .observeOn(AndroidSchedulers.mainThread())
@@ -111,7 +94,6 @@ class SearchRepoViewModel(
                         currentState.copy(
                             isLoading = false,
                             searchItems = it
-                            //payload = it.map { PresentationMapper.toRepositoryModel(it) })
                         )
                     )
                 },

@@ -22,7 +22,7 @@ class RepositoriesViewHolder(
         Glide.with(context).load(item.ownerAvatarUrl).into(itemView.repositorysearch_item_image)
         itemView.repositorysearch_item_name.text = item.name
         itemView.repositorysearch_item_description.text = "Описание : ${item.description}"
-        itemView.repositorysearch_item_owner_login.text = "Владелец : ${item.ownerLogin}"
+        itemView.repositorysearch_item_owner_login.text = "Автор : ${item.ownerLogin}"
     }
 
 

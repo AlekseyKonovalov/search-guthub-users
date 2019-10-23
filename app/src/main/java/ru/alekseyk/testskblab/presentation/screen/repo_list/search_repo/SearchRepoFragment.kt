@@ -48,7 +48,8 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
 
     override fun render(state: SearchRepoViewState) {
         search_key_edt.diffedValue = state.searchQuery
-        search_placeholder_layout.isVisible = state.searchItems.isNullOrEmpty() && !state.isSearchMode
+        search_placeholder_layout.isVisible =
+            state.searchItems.isNullOrEmpty() && !state.isSearchMode
 
         adapter.setLoadingState(state.pagingLoadingState)
         state.searchItems?.let {

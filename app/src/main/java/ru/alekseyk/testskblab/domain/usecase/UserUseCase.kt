@@ -16,7 +16,7 @@ class UserUseCase(
         return repository.setUserData(accountEmail)
     }
 
-    fun getCurrentUserData():Single<String> {
+    fun getCurrentUserData(): Single<String> {
         return repository.getCurrentUserData()
     }
 

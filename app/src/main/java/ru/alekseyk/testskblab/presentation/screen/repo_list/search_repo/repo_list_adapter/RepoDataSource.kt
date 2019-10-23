@@ -19,6 +19,16 @@ class RepoDataSource(
     private val disposables: CompositeDisposable,
     private val query: String
 ) : PageKeyedDataSource<Long, RepositoryModel>() {
+
+    var retry: (() -> Unit)? = null
+
+    val loadingState = MutableLiveData<PagingLoadingState>()
+
+    init {
+        loadingState.postValue(PagingLoadingState.LOADING)
+    }
+
+
     override fun loadInitial(
         params: LoadInitialParams<Long>,
         callback: LoadInitialCallback<Long, RepositoryModel>
@@ -74,11 +84,14 @@ class RepoDataSource(
                     when (response) {
                         is LoadingState.Success -> {
                             loadingState.postValue(PagingLoadingState.DONE)
-                            callback.onResult(response.data.map {
-                                PresentationMapper.toRepositoryModel(
-                                    it
-                                )
-                            }, if ((params.key + 1) < 11) params.key + 1 else null)
+                            callback.onResult(
+                                response.data.map {
+                                    PresentationMapper.toRepositoryModel(
+                                        it
+                                    )
+                                },
+                                if ((params.key + 1) < GITHUB_API_LIMIT_PAGE) params.key + 1 else null
+                            )
 
 
                         }
@@ -97,13 +110,8 @@ class RepoDataSource(
     ) {
     }
 
-
-    var retry: (() -> Unit)? = null
-
-    val loadingState = MutableLiveData<PagingLoadingState>()
-
-    init {
-        loadingState.postValue(PagingLoadingState.LOADING)
+    companion object {
+        private const val GITHUB_API_LIMIT_PAGE = 11
     }
 
 

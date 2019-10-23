@@ -20,6 +20,7 @@
 
 Retrofit - для загрузки данных
 ![Retrofit](https://square.github.io/retrofit/) - для загрузки данных
+[Retrofit](https://square.github.io/retrofit/) - для загрузки данных
 
 
 Koin - в качестве инструмента для реализации DI

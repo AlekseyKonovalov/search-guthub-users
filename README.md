@@ -14,6 +14,7 @@
 пользователя.
 
 ![](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview-video.webm)
+[![Watch the video](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview-video.webm)](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview-video.webm)
 
 Стек
 Retrofit - для загрузки данных

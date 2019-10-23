@@ -13,11 +13,17 @@
 Избранное хранится на устройстве, предусмотреть возможность смены
 пользователя.
 
-![](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview-video.webm)
-[![Watch the video](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview-video.webm)](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview-video.webm)
+![](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview-video.gif)
 
+ 
 Стек
+
 Retrofit - для загрузки данных
+
 Koin - в качестве инструмента для реализации DI
+
 RxJava2 - в качестве инструмента для реализации асинхронной работы
+
 Room - для хранения данных
+
+Paging Library - для постраничной подгрузки данных

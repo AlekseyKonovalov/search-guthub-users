@@ -35,16 +35,15 @@
 
                     <ImageButton
                         android:id="@+id/repolist_search_btn"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_marginStart="10dp"
                         android:background="?selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_search"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/search_key_edt"
                         app:layout_constraintStart_toStartOf="@+id/search_key_edt"
-                        app:layout_constraintTop_toTopOf="@+id/search_key_edt"
-                        tools:visibility="visible" />
+                        app:layout_constraintTop_toTopOf="@+id/search_key_edt" />
 
                     <EditText
                         android:id="@+id/search_key_edt"

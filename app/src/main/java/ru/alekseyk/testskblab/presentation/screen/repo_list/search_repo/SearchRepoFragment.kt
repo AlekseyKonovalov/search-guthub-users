@@ -30,7 +30,7 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
     }
 
     override fun initListeners() {
-        search_key_edt.setOnKeyListener { view, i, keyEvent ->
+        search_key_edt.setOnKeyListener { _, i, keyEvent ->
             if ((keyEvent.action == KeyEvent.ACTION_DOWN) &&
                 (i == KeyEvent.KEYCODE_ENTER)
             ) {
@@ -39,13 +39,16 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
             }
             false
         }
+        repolist_search_btn.setOnClickListener {
+            viewModel.updateSearchQuery(search_key_edt.text.toString())
+        }
         repolist_search_clear_btn.setOnClickListener { search_key_edt.text.clear() }
 
     }
 
     override fun render(state: SearchRepoViewState) {
         search_key_edt.diffedValue = state.searchQuery
-        search_placeholder_layout.isVisible = !state.searchItems.isNullOrEmpty() && !state.isSearchMode
+        search_placeholder_layout.isVisible = state.searchItems.isNullOrEmpty() && !state.isSearchMode
 
         adapter.setLoadingState(state.pagingLoadingState)
         state.searchItems?.let {

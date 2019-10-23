@@ -35,5 +35,7 @@
     <string name="detail_fork_count">Количество fork</string>
     <string name="detail_star_count">Количество star</string>
     <string name="detail_creation_date">Дата создания</string>
+    <string name="detail_btn_add_fav_btn">Добавить в избранное</string>
+    <string name="detail_btn_delete_fav_btn">Удалить из избранного</string>
 
 </resources>

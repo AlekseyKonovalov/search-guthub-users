@@ -12,8 +12,6 @@ class RepositoriesViewHolder(
 
 ) : BaseViewHolder(itemView) {
 
-    private var isStarred: Boolean = false
-
     init {
         itemView.repositorysearch_item.setOnClickListener {
             if (hasPosition) onItemClick.invoke(adapterPosition)
@@ -21,13 +19,10 @@ class RepositoriesViewHolder(
     }
 
     fun bind(item: RepositoryModel) {
-        isStarred = item.isFavorite
-
         Glide.with(context).load(item.ownerAvatarUrl).into(itemView.repositorysearch_item_image)
         itemView.repositorysearch_item_name.text = item.name
-        itemView.repositorysearch_item_description.text = "Description : ${item.description}"
-        itemView.repositorysearch_item_owner_login.text = "Owner : ${item.ownerLogin}"
-
+        itemView.repositorysearch_item_description.text = "Описание : ${item.description}"
+        itemView.repositorysearch_item_owner_login.text = "Владелец : ${item.ownerLogin}"
     }
 
 

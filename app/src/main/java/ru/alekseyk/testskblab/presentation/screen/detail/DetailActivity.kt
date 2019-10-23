@@ -38,7 +38,8 @@ class DetailActivity : StateActivity<DetailViewState>(
     override fun render(state: DetailViewState) {
         general_progressbar.isVisible = state.isLoading
         add_favorites_btn.text =
-            if (state.isFavorite) "Удалить из избранного" else "Добавить в избранное"
+            if (state.isFavorite) getString(R.string.detail_btn_delete_fav_btn)
+            else getString(R.string.detail_btn_add_fav_btn)
     }
 
     override fun initViews() {

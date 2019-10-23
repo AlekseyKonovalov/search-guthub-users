@@ -42,7 +42,10 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
         repolist_search_btn.setOnClickListener {
             viewModel.updateSearchQuery(search_key_edt.text.toString())
         }
-        repolist_search_clear_btn.setOnClickListener { search_key_edt.text.clear() }
+        repolist_search_clear_btn.setOnClickListener {
+            search_key_edt.text.clear()
+            viewModel.updateSearchQuery(search_key_edt.text.toString())
+        }
 
     }
 
@@ -52,9 +55,7 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
             state.searchItems.isNullOrEmpty() && !state.isSearchMode
 
         adapter.setLoadingState(state.pagingLoadingState)
-        state.searchItems?.let {
-            adapter.submitList(it)
-        }
+        adapter.submitList(state.searchItems)
 
         if (!state.isSearchMode) {
             activity?.hideKeyboard()

@@ -71,14 +71,13 @@ class RepositoriesAdapter(
     }
 
 
-
     private fun onItemClick(position: Int) {
         getItem(position)?.let { onItemClick.invoke(it) }
     }
 
 
     fun setLoadingState(loadingState: PagingLoadingState) {
-        this.loadingState = loadingState
+       this.loadingState = loadingState
         notifyItemChanged(itemCount)
     }
 
@@ -128,7 +127,7 @@ class RepositoriesAdapter(
                 oldItem: RepositoryModel,
                 newItem: RepositoryModel
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem == newItem
             }
         }
 

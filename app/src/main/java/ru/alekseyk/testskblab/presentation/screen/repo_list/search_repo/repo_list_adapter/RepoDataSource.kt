@@ -58,6 +58,7 @@ class RepoDataSource(
         params: LoadParams<Long>,
         callback: LoadCallback<Long, RepositoryModel>
     ) {
+        loadingState.postValue(PagingLoadingState.LOADING)
         disposables += repositoriesUseCase.getRepositoriesBySearch(
             query,
             params.key.toInt(),
@@ -73,7 +74,6 @@ class RepoDataSource(
                     when (response) {
                         is LoadingState.Success -> {
                             loadingState.postValue(PagingLoadingState.DONE)
-
                             callback.onResult(response.data.map {
                                 PresentationMapper.toRepositoryModel(
                                     it

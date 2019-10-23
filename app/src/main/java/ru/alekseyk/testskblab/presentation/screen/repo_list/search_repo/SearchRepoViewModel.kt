@@ -52,7 +52,6 @@ class SearchRepoViewModel(
     }
 
     fun updateSearchQuery(query: String) {
-
         Observable.just(query)
             .map { text -> text.toLowerCase().trim() }
             .distinct()
@@ -105,13 +104,8 @@ class SearchRepoViewModel(
             .addTo(disposables)
     }
 
-    fun invalidateDataSource(position: Int) {
-        sourceFactory.dataSource.invalidate()
-    }
-
     fun onPagingRetryBtnClickListener() {
         sourceFactory.dataSource.retry?.invoke()
     }
-
 
 }

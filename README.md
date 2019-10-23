@@ -13,7 +13,7 @@
 Избранное хранится на устройстве, предусмотреть возможность смены
 пользователя.
 
-![](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview-video.gif)
+![](https://github.com/AlekseyKonovalov/testskblab/blob/master/preview.gif)
 
  
 Стек

@@ -18,15 +18,12 @@
  
 Стек
 
-Retrofit - для загрузки данных
-![Retrofit](https://square.github.io/retrofit/) - для загрузки данных
 [Retrofit](https://square.github.io/retrofit/) - для загрузки данных
 
+[Koin](https://github.com/InsertKoinIO/koin) - в качестве инструмента для реализации DI
 
-Koin - в качестве инструмента для реализации DI
+[RxJava2](https://github.com/ReactiveX/RxJava) - в качестве инструмента для реализации асинхронной работы
 
-RxJava2 - в качестве инструмента для реализации асинхронной работы
+[Room](https://developer.android.com/jetpack/androidx/releases/room) - для хранения данных
 
-Room - для хранения данных
-
-Paging Library - для постраничной подгрузки данных
+[Paging Library](https://developer.android.com/topic/libraries/architecture/paging) - для постраничной подгрузки данных

@@ -8,14 +8,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import ru.alekseyk.testskblab.R
 
-fun Context.toast(@StringRes textResource: Int, length: Int = Toast.LENGTH_LONG) {
-    Toast.makeText(this, textResource, length).show()
-}
-
-fun Context.toast(text: String, length: Int = Toast.LENGTH_LONG) {
-    Toast.makeText(this, text, length).show()
-}
-
 fun Activity.hideKeyboard() {
     val inputMethodManager =
         this.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

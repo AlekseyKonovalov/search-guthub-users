@@ -1,6 +1,5 @@
 package ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo
 
-import android.view.KeyEvent
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.fragment_search_repo.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -8,6 +7,7 @@ import ru.alekseyk.testskblab.R
 import ru.alekseyk.testskblab.presentation.base.StateFragment
 import ru.alekseyk.testskblab.presentation.ext.diffedValue
 import ru.alekseyk.testskblab.presentation.ext.hideKeyboard
+import ru.alekseyk.testskblab.presentation.ext.setOnKeyEnterListener
 import ru.alekseyk.testskblab.presentation.models.RepositoryModel
 import ru.alekseyk.testskblab.presentation.screen.detail.DetailActivity
 import ru.alekseyk.testskblab.presentation.screen.repo_list.search_repo.repo_list_adapter.RepositoriesAdapter
@@ -30,14 +30,8 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
     }
 
     override fun initListeners() {
-        search_key_edt.setOnKeyListener { _, i, keyEvent ->
-            if ((keyEvent.action == KeyEvent.ACTION_DOWN) &&
-                (i == KeyEvent.KEYCODE_ENTER)
-            ) {
-                viewModel.updateSearchQuery(search_key_edt.text.toString())
-                true
-            }
-            false
+        search_key_edt.setOnKeyEnterListener {
+            viewModel.updateSearchQuery(search_key_edt.text.toString())
         }
         repolist_search_btn.setOnClickListener {
             viewModel.updateSearchQuery(search_key_edt.text.toString())
@@ -46,7 +40,6 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
             search_key_edt.text.clear()
             viewModel.updateSearchQuery(search_key_edt.text.toString())
         }
-
     }
 
     override fun render(state: SearchRepoViewState) {
@@ -57,7 +50,7 @@ class SearchRepoFragment : StateFragment<SearchRepoViewState>(
         adapter.setLoadingState(state.pagingLoadingState)
         adapter.submitList(state.searchItems)
 
-        if (!state.isSearchMode) {
+        if (state.isLoading) {
             activity?.hideKeyboard()
             search_key_edt.clearFocus()
         }

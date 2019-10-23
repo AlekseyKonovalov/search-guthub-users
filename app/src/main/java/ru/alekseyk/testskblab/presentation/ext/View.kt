@@ -1,7 +1,6 @@
 package ru.alekseyk.testskblab.presentation.ext
 
-import android.text.Editable
-import android.text.TextWatcher
+import android.view.KeyEvent
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
@@ -14,19 +13,23 @@ var TextView.diffedValue: String
         text = value
     }
 
-fun EditText.addTextChangedListener(listener: (String) -> Unit) {
-    addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(p0: Editable?) = listener.invoke(p0.toString())
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
-    })
+fun EditText.setOnKeyEnterListener(listener: (String) -> Unit) {
+    this.setOnKeyListener { _, i, keyEvent ->
+        if ((keyEvent.action == KeyEvent.ACTION_DOWN) &&
+            (i == KeyEvent.KEYCODE_ENTER)
+        ) {
+            listener.invoke(this.text.toString())
+            true
+        }
+        false
+    }
 }
 
 fun Toolbar.setNavigationOnClickListener(listener: () -> Unit) {
     setNavigationOnClickListener { listener.invoke() }
 }
 
-fun TabLayout.switchTab(listener: (TabLayout.Tab) -> Unit){
+fun TabLayout.switchTab(listener: (TabLayout.Tab) -> Unit) {
     this.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
         override fun onTabReselected(p0: TabLayout.Tab?) {}
         override fun onTabUnselected(p0: TabLayout.Tab?) {}
